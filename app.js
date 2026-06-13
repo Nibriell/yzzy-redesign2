@@ -147,11 +147,18 @@ function logoFlip() {
     { start: 5500, stop: 10500 },  // Y -> Y
   ];
 
-  function flapTick(span, ch) {
+  // o clapeta care cade: caracterul nou se roteste din muchia de sus (edge-on) pana plat
+  // Web Animations API e fiabil pe toate device-urile (fara hack-ul de reflow CSS)
+  function flap(span, ch, dur) {
     span.textContent = ch;
-    span.style.animation = 'none';
-    void span.offsetWidth;
-    span.style.animation = 'flapDrop 85ms cubic-bezier(.3,.7,.4,1)';
+    span.animate(
+      [
+        { transform: 'rotateX(-90deg)', offset: 0 },
+        { transform: 'rotateX(10deg)', offset: 0.72 },
+        { transform: 'rotateX(0deg)', offset: 1 }
+      ],
+      { duration: dur, easing: 'cubic-bezier(.3,.75,.35,1)' }
+    );
   }
 
   seq.forEach((cfg, i) => {
@@ -159,13 +166,10 @@ function logoFlip() {
       tiles[i].classList.add('flapping');
       let k = ALPHA.indexOf(EASY[i]);
       if (k < 0) k = 0;
-      const iv = setInterval(() => { k = (k + 1) % 26; flapTick(spans[i], ALPHA[k]); }, 85);
+      const iv = setInterval(() => { k = (k + 1) % 26; flap(spans[i], ALPHA[k], 120); }, 135);
       setTimeout(() => {
         clearInterval(iv);
-        spans[i].style.animation = 'none';
-        void spans[i].offsetWidth;
-        spans[i].textContent = YZZY[i];
-        spans[i].style.animation = 'flapDrop 130ms cubic-bezier(.3,.7,.4,1)';
+        flap(spans[i], YZZY[i], 170);
         tiles[i].classList.remove('flapping');
       }, cfg.stop - cfg.start);
     }, cfg.start);
