@@ -124,26 +124,49 @@ function flapText(el, final, speed = 50) {
   };
   tick();
 }
-// logo: la intrarea pe site (o data pe sesiune) o animatie de 3s
-// tine EASY ~0.7s, apoi flapeaza literele si se aseaza progresiv pe YZZY
+// logo: la intrarea pe site (o data pe sesiune) — cascada Solari EASY -> YZZY
+// fiecare litera se roteste separat, la timpii exacti ceruti (ms de la deschidere):
+//  E start 1.0s, stop 4.5s | A start 2.5s, stop 6.5s | S start 4.0s, stop 8.5s | Y start 5.5s, stop 10.5s
 function logoFlip() {
-  const tiles = [...document.querySelectorAll('nav .logo .tile span')];
-  if (tiles.length !== 4 || sessionStorage.getItem('yzzyFlip')) return;
+  const tiles = [...document.querySelectorAll('nav .logo .tile')];
+  const spans = tiles.map(t => t.querySelector('span'));
+  if (spans.length !== 4 || sessionStorage.getItem('yzzyFlip')) return;
   sessionStorage.setItem('yzzyFlip', '1');
-  tiles.forEach((t, i) => { t.textContent = 'EASY'[i]; t.parentElement.classList.add('flapping'); });
-  const start = performance.now();
-  const settleAt = [1900, 2300, 2700, 3000];
-  setTimeout(() => tiles.forEach((t, i) => {
-    const iv = setInterval(() => {
-      if (performance.now() - start >= settleAt[i]) {
+
+  const EASY = 'EASY', YZZY = 'YZZY';
+  const ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  spans.forEach((s, i) => { s.textContent = EASY[i]; });
+
+  const seq = [
+    { start: 1000, stop: 4500 },   // E -> Y
+    { start: 2500, stop: 6500 },   // A -> Z
+    { start: 4000, stop: 8500 },   // S -> Z (al II-lea Z)
+    { start: 5500, stop: 10500 },  // Y -> Y
+  ];
+
+  function flapTick(span, ch) {
+    span.textContent = ch;
+    span.style.animation = 'none';
+    void span.offsetWidth;
+    span.style.animation = 'flapDrop 85ms cubic-bezier(.3,.7,.4,1)';
+  }
+
+  seq.forEach((cfg, i) => {
+    setTimeout(() => {
+      tiles[i].classList.add('flapping');
+      let k = ALPHA.indexOf(EASY[i]);
+      if (k < 0) k = 0;
+      const iv = setInterval(() => { k = (k + 1) % 26; flapTick(spans[i], ALPHA[k]); }, 85);
+      setTimeout(() => {
         clearInterval(iv);
-        t.textContent = 'YZZY'[i];
-        t.parentElement.classList.remove('flapping');
-      } else {
-        t.textContent = FLAP_CHARS[Math.floor(Math.random() * 36)];
-      }
-    }, 65);
-  }), 700);
+        spans[i].style.animation = 'none';
+        void spans[i].offsetWidth;
+        spans[i].textContent = YZZY[i];
+        spans[i].style.animation = 'flapDrop 130ms cubic-bezier(.3,.7,.4,1)';
+        tiles[i].classList.remove('flapping');
+      }, cfg.stop - cfg.start);
+    }, cfg.start);
+  });
 }
 
 // ---------- efecte ----------
