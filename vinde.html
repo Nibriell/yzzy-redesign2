@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinde-ți telefonul — YZZY · Evaluare în 2 minute</title>
+<meta name="description" content="Vinde-ți telefonul vechi în 2 minute: evaluare instantă, curier gratuit la ușa ta și banii în cont după verificare.">
+<link rel="stylesheet" href="theme.css">
+<style>
+.sell-hero{padding:130px 4vw 50px;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+@media(max-width:900px){.sell-hero{grid-template-columns:1fr}}
+.sell-hero h1{font-size:clamp(2.4rem,6vw,5rem)}
+.sell-hero p{color:var(--gri);max-width:430px;margin:20px 0 28px}
+/* conveior invers: telefoane curg dreapta->stanga */
+.conveyor{background:var(--carbune);border:1px solid var(--linie);border-radius:18px;padding:30px;overflow:hidden;position:relative}
+.conveyor-label{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gri);margin-bottom:18px;display:flex;justify-content:space-between}
+.conveyor-track{display:flex;gap:14px;width:max-content;animation:conv 18s linear infinite}
+.conveyor:hover .conveyor-track{animation-play-state:paused}
+@keyframes conv{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.conv-item{width:90px;height:90px;border-radius:10px;background:#141416;display:grid;place-items:center;padding:10px;flex:none}
+.conv-item img{max-width:100%;max-height:100%;object-fit:contain;filter:brightness(.9)}
+.conv-out{text-align:center;margin-top:20px;padding-top:18px;border-top:1px dashed var(--linie)}
+.conv-out .lbl{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gri)}
+.conv-out .big{font-family:var(--f-dot);font-weight:900;color:var(--amber);font-size:clamp(1.8rem,5vw,2.8rem)}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:40px 4vw 50px;max-width:1100px;margin:0 auto}
+@media(max-width:760px){.steps3{grid-template-columns:1fr}}
+.s3{background:var(--carbune);border:1px solid var(--linie);border-radius:14px;padding:30px;transition:border-color .2s}
+.s3:hover{border-color:var(--amber)}
+.s3 .n{font-family:var(--f-mono);color:var(--amber);font-size:.7rem;letter-spacing:.2em;display:block;margin-bottom:40px}
+.s3 h4{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.2rem;margin-bottom:10px}
+.s3 p{color:var(--gri);font-size:.9rem}
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 4vw 80px;max-width:1200px;margin:0 auto}
+@media(max-width:760px){.why{grid-template-columns:1fr 1fr}}
+.why div{background:var(--fum);border:1px solid rgba(245,158,11,.16);border-radius:12px;padding:20px}
+.why b{font-family:var(--f-mono);font-size:.8rem;color:var(--amber);display:block;margin-bottom:4px}
+.why span{font-size:.8rem;color:var(--gri)}
+.final{padding:100px 4vw;text-align:center;background:var(--fum);border-top:1px solid rgba(245,158,11,.15)}
+.final h2{font-size:clamp(2rem,5.5vw,4rem);margin-bottom:18px}
+.final p{color:var(--gri);max-width:420px;margin:0 auto 28px}
+</style>
+</head>
+<body>
+<nav id="nav"></nav>
+
+<header class="sell-hero grid-bg">
+  <div>
+    <span class="sec-num" style="display:block;margin-bottom:16px">CHECK-IN INVERS · BUYBACK</span>
+    <h1 class="display">Vechiul tău <em class="amber">valorează aur.</em></h1>
+    <p>Îți vinzi telefonul vechi în 2 minute, pleci cu unul ca nou. Evaluare instantă, curier gratuit la ușa ta, banii în cont după verificare.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn btn-amber" href="#estimare">Estimează-mi telefonul →</a>
+      <a class="btn btn-ghost" href="catalog.html">Vezi ce iei în schimb</a>
+    </div>
+  </div>
+  <div class="conveyor">
+    <div class="conveyor-label"><span>◄ CONVEIOR BUYBACK</span><span>EVALUARE LIVE</span></div>
+    <div class="conveyor-track" id="convTrack"></div>
+    <div class="conv-out">
+      <div class="lbl">Primești până la</div>
+      <div class="big" id="convOut">2.350 lei</div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" id="ticker" aria-hidden="true"></div>
+
+<div class="sec-head reveal" style="padding:50px 4vw 0;margin-bottom:30px" id="estimare">
+  <h2 class="sec-title">Trei <em>pași</em>, două minute</h2>
+  <span class="sec-num">CUM VINZI</span>
+</div>
+<div class="steps3">
+  <div class="s3 reveal"><span class="n">01</span><h4>Descrie dispozitivul</h4><p>Completezi modelul și starea telefonului. Primești oferta pe loc, transparent.</p></div>
+  <div class="s3 reveal"><span class="n">02</span><h4>Trimite-l gratuit</h4><p>Curierul vine la tine, oriunde în România. Ambalarea și transportul sunt pe noi.</p></div>
+  <div class="s3 reveal"><span class="n">03</span><h4>Primești banii</h4><p>După verificarea tehnică, banii ajung direct în contul tău. Rapid și sigur.</p></div>
+</div>
+
+<div class="sec-head reveal" style="padding:0 4vw;margin-bottom:24px">
+  <h2 class="sec-title">De ce <em>la noi</em></h2>
+</div>
+<div class="why">
+  <div class="reveal"><b>2 minute</b><span>Evaluare instantă, fără negocieri.</span></div>
+  <div class="reveal"><b>Curier gratuit</b><span>Ridicare de la ușa ta, oriunde în țară.</span></div>
+  <div class="reveal"><b>Bani în cont</b><span>Imediat după verificarea tehnică.</span></div>
+  <div class="reveal"><b>Trade-in</b><span>Pleci direct cu un telefon ca nou.</span></div>
+</div>
+
+<section class="final">
+  <h2 class="display reveal">Gata să-l <em class="amber">predai?</em></h2>
+  <p class="reveal">Estimarea durează mai puțin decât o cafea. Curierul face restul.</p>
+  <a class="btn btn-amber reveal" href="https://wa.me/+40761053053">Începe pe WhatsApp →</a>
+</section>
+
+<footer id="footer"></footer>
+
+<script src="data/catalog.js"></script>
+<script src="app.js"></script>
+<script>
+renderNav('vinde.html');
+renderTicker(document.getElementById('ticker'));
+renderFooter(document.getElementById('footer'));
+
+// conveior cu poze reale de produse, dublate pentru loop infinit
+const imgs=P.filter(p=>p.cat==='telefoane').slice(0,8).map(p=>p.thumb);
+const track=document.getElementById('convTrack');
+track.innerHTML=imgs.concat(imgs).map(src=>`<div class="conv-item"><img src="${src}" alt=""></div>`).join('');
+
+// estimare animata: cicleaza cateva valori
+const vals=[2350,1890,3120,2680,4150];let vi=0;
+const out=document.getElementById('convOut');
+setInterval(()=>{vi=(vi+1)%vals.length;out.textContent=new Intl.NumberFormat('ro-RO').format(vals[vi])+' lei'},2600);
+initReveal();
+</script>
+</body>
+</html>

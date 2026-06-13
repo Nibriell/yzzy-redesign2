@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rate fără dobândă — YZZY · UniCredit, BT, LeanPay, TBI</title>
+<meta name="description" content="Plata în rate 0% prin UniCredit Consumer Financing, Smart by BT Direct, LeanPay și TBI Bank. Credit 100% online, aprobat în minute.">
+<link rel="stylesheet" href="theme.css">
+<style>
+.rate-hero{padding:130px 4vw 40px;text-align:center}
+.rate-hero h1{font-size:clamp(2.4rem,6.5vw,5rem);max-width:900px;margin:0 auto 18px}
+.rate-hero p{color:var(--gri);max-width:480px;margin:0 auto}
+.calc{max-width:760px;margin:50px auto 0;background:var(--carbune);border:1px solid var(--linie);border-radius:18px;padding:34px}
+.calc h3{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:22px;text-align:center}
+.calc-row{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.calc-row label{flex:none;width:120px;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gri);margin:0}
+.calc input[type=range]{flex:1;accent-color:var(--amber)}
+.calc .val{font-family:var(--f-dot);font-weight:900;color:var(--amber);width:130px;text-align:right;font-size:1.1rem}
+.calc-result{text-align:center;border-top:1px solid var(--linie);margin-top:14px;padding-top:24px}
+.calc-result .big{font-family:var(--f-dot);font-weight:900;color:var(--amber);font-size:clamp(2.4rem,7vw,3.8rem);line-height:1}
+.calc-result .lbl{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gri);margin-top:8px}
+.partners-sec{padding:80px 4vw}
+.partner-card{display:grid;grid-template-columns:1fr;gap:0;background:var(--carbune);border:1px solid var(--linie);border-radius:18px;overflow:hidden;margin-bottom:22px;scroll-margin-top:90px}
+.partner-banner{width:100%;display:block;border-bottom:1px solid var(--linie)}
+.partner-meta{padding:24px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.partner-meta h3{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.3rem;margin-bottom:6px}
+.partner-meta p{color:var(--gri);font-size:.9rem;max-width:440px}
+.partner-meta .facts{display:flex;gap:18px;margin-top:12px;flex-wrap:wrap}
+.partner-meta .fact{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1000px;margin:0 auto;padding:0 4vw 90px}
+@media(max-width:760px){.steps3{grid-template-columns:1fr}}
+.s3{background:var(--carbune);border:1px solid var(--linie);border-radius:14px;padding:28px}
+.s3 .n{font-family:var(--f-mono);color:var(--amber);font-size:.7rem;letter-spacing:.18em;margin-bottom:30px;display:block}
+.s3 h4{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.1rem;margin-bottom:8px}
+.s3 p{color:var(--gri);font-size:.88rem}
+</style>
+</head>
+<body>
+<nav id="nav"></nav>
+
+<header class="rate-hero grid-bg">
+  <span class="sec-num" style="display:block;margin-bottom:16px">04 / RATE 0%</span>
+  <h1 class="display">Plătești în rate. <em class="amber">Zero dobândă.</em></h1>
+  <p>Credit 100% online prin patru parteneri bancari, aprobat în câteva minute. Fără hârtii de semnat, fără drumuri la bancă.</p>
+
+  <div class="calc">
+    <h3>Calculator de rate</h3>
+    <div class="calc-row"><label>Valoare produs</label><input type="range" id="amount" min="500" max="15000" step="100" value="3000"><span class="val" id="amountV"></span></div>
+    <div class="calc-row"><label>Număr de rate</label><input type="range" id="months" min="3" max="36" step="3" value="12"><span class="val" id="monthsV"></span></div>
+    <div class="calc-result">
+      <div class="big" id="rateBig"></div>
+      <div class="lbl">pe lună · dobândă 0% · fără costuri ascunse</div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" id="ticker" aria-hidden="true"></div>
+
+<section class="partners-sec">
+  <div class="sec-head reveal">
+    <h2 class="sec-title">Cei <em>patru</em> parteneri</h2>
+    <span class="sec-num">FINANȚARE · APROBARE ONLINE</span>
+  </div>
+
+  <div class="partner-card reveal" id="unicredit">
+    <img class="partner-banner" src="https://yzzy.ro/wp-content/uploads/2026/05/unicredit.webp" alt="UniCredit Consumer Financing — Ai găsit. Am finanțat.">
+    <div class="partner-meta">
+      <div>
+        <h3>UniCredit Consumer Financing</h3>
+        <p>Creditul 100% online: alegi această metodă de plată din coș și finalizezi totul digital.</p>
+        <div class="facts"><span class="fact">◆ 100% online</span><span class="fact">◆ Aprobare rapidă</span><span class="fact">◆ Dobândă 0%</span></div>
+      </div>
+      <a class="btn btn-amber" href="https://yzzy.ro/credit-100-online-prin-unicredit-consumer-financing/" target="_blank" rel="noopener">Detalii UniCredit →</a>
+    </div>
+  </div>
+
+  <div class="partner-card reveal" id="bt">
+    <div class="partner-meta" style="background:var(--alb)">
+      <img src="https://yzzy.ro/wp-content/uploads/2025/02/Logo-Smart-by-BT-Direct-1-300x115.webp" alt="Smart by BT Direct" style="height:60px">
+    </div>
+    <div class="partner-meta">
+      <div>
+        <h3>Smart by BT Direct</h3>
+        <p>Finanțare prin BT Direct, partener Banca Transilvania. Plată în rate direct la checkout, simplu și rapid.</p>
+        <div class="facts"><span class="fact">◆ BT Direct</span><span class="fact">◆ Rate flexibile</span><span class="fact">◆ Online</span></div>
+      </div>
+      <a class="btn btn-amber" href="https://yzzy.ro/" target="_blank" rel="noopener">Detalii BT Direct →</a>
+    </div>
+  </div>
+
+  <div class="partner-card reveal" id="leanpay">
+    <img class="partner-banner" src="https://yzzy.ro/wp-content/uploads/2026/01/leanpay_01_26.webp" alt="LeanPay — −10% la orice produs cumpărat cu LeanPay">
+    <div class="partner-meta">
+      <div>
+        <h3>LeanPay</h3>
+        <p>Până la 25.000 lei și 60 de rate, fără hârtii de semnat și fără drumuri la bancă. Răspuns pe loc.</p>
+        <div class="facts"><span class="fact">◆ Până la 60 rate</span><span class="fact">◆ Răspuns pe loc</span><span class="fact">◆ −10% la produs</span></div>
+      </div>
+      <a class="btn btn-amber" href="https://yzzy.ro/regulament-leanpay/" target="_blank" rel="noopener">Regulament LeanPay →</a>
+    </div>
+  </div>
+
+  <div class="partner-card reveal" id="tbi">
+    <img class="partner-banner" src="https://yzzy.ro/wp-content/uploads/2026/05/tbi_mai_iunie.webp" alt="TBI Bank — finanțare în rate">
+    <div class="partner-meta">
+      <div>
+        <h3>TBI Bank</h3>
+        <p>Plată în rate prin TBI Bank, una dintre cele mai folosite soluții de finanțare la cumpărături online din România.</p>
+        <div class="facts"><span class="fact">◆ TBI Bank</span><span class="fact">◆ Aprobare în minute</span><span class="fact">◆ Online</span></div>
+      </div>
+      <a class="btn btn-amber" href="https://yzzy.ro/" target="_blank" rel="noopener">Detalii TBI →</a>
+    </div>
+  </div>
+</section>
+
+<div class="sec-head reveal" style="padding:0 4vw;margin-bottom:30px">
+  <h2 class="sec-title">Trei <em>pași</em></h2>
+  <span class="sec-num">CUM FUNCȚIONEAZĂ</span>
+</div>
+<div class="steps3">
+  <div class="s3 reveal"><span class="n">01</span><h4>Alegi produsul</h4><p>Adaugi în coș orice telefon sau gadget și mergi la finalizare.</p></div>
+  <div class="s3 reveal"><span class="n">02</span><h4>Alegi „rate" la plată</h4><p>Selectezi finanțatorul preferat și completezi cererea, 100% online.</p></div>
+  <div class="s3 reveal"><span class="n">03</span><h4>Primești aprobarea</h4><p>În câteva minute. Coletul pleacă spre tine, cu garanție 2 ani.</p></div>
+</div>
+
+<section class="grid-bg" style="text-align:center;padding-bottom:110px">
+  <h2 class="display reveal" style="font-size:clamp(1.8rem,4.5vw,3rem);margin-bottom:22px">Gata de <em class="amber">îmbarcare?</em></h2>
+  <a class="btn btn-amber reveal" href="catalog.html">Vezi cursele →</a>
+</section>
+
+<footer id="footer"></footer>
+
+<script src="data/catalog.js"></script>
+<script src="app.js"></script>
+<script>
+renderNav('rate.html');
+renderTicker(document.getElementById('ticker'));
+renderFooter(document.getElementById('footer'));
+
+const amount=document.getElementById('amount'),months=document.getElementById('months');
+function calc(){
+  const a=+amount.value,m=+months.value;
+  document.getElementById('amountV').textContent=new Intl.NumberFormat('ro-RO').format(a)+' lei';
+  document.getElementById('monthsV').textContent=m+' rate';
+  document.getElementById('rateBig').textContent=new Intl.NumberFormat('ro-RO').format(Math.round(a/m))+' lei';
+}
+amount.addEventListener('input',calc);months.addEventListener('input',calc);calc();
+initReveal();
+
+// scroll la ancora din hash (ex. #leanpay)
+if(location.hash){const t=document.querySelector(location.hash);if(t)setTimeout(()=>t.scrollIntoView({behavior:'smooth'}),200)}
+</script>
+</body>
+</html>

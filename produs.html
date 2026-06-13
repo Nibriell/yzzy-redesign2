@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produs — YZZY</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+.pdp{padding:120px 4vw 90px;max-width:1200px;margin:0 auto}
+.crumb{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gri);margin-bottom:28px}
+.crumb a{color:var(--gri);text-decoration:none}.crumb a:hover{color:var(--amber)}
+.pdp-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+@media(max-width:900px){.pdp-grid{grid-template-columns:1fr;gap:34px}}
+.gallery{position:sticky;top:90px;align-self:start}
+.gmain{background:var(--carbune);border:1px solid var(--linie);border-radius:18px;height:420px;display:grid;place-items:center;padding:40px;position:relative;overflow:hidden}
+.gmain img{max-height:340px;max-width:90%;object-fit:contain;filter:brightness(.97)}
+.gthumbs{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.gthumb{width:70px;height:70px;border:1px solid var(--linie);border-radius:10px;background:#141416;display:grid;place-items:center;cursor:pointer;padding:8px;transition:border-color .2s}
+.gthumb.active{border-color:var(--amber)}
+.gthumb img{max-width:100%;max-height:100%;object-fit:contain}
+.scan-badge{position:absolute;top:16px;right:16px;font-family:var(--f-mono);font-size:.58rem;letter-spacing:.12em;color:var(--verde);background:var(--fum);border:1px solid rgba(74,222,128,.3);padding:5px 12px;border-radius:100px}
+.brand-line{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.pdp h1{font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.05;margin-bottom:16px}
+.price-row{display:flex;align-items:baseline;gap:14px;margin:20px 0}
+.price-row .now{font-family:var(--f-dot);font-weight:900;font-size:2.4rem;color:var(--amber)}
+.price-row .old{font-family:var(--f-mono);font-size:1rem;color:var(--gri);text-decoration:line-through}
+.price-row .save{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;color:var(--fum);background:var(--amber);padding:5px 11px;border-radius:100px}
+.rate-hint{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;color:var(--gri);margin-bottom:22px}
+.rate-hint b{color:var(--amber)}.rate-hint a{color:var(--amber)}
+.spec-board{background:var(--carbune);border:1px solid var(--linie);border-radius:14px;margin:24px 0;overflow:hidden}
+.spec-row{display:flex;justify-content:space-between;gap:14px;padding:12px 18px;border-bottom:1px solid #1A1A1D;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.spec-row:last-child{border-bottom:none}
+.spec-row span:first-child{color:var(--gri)}.spec-row span:last-child{color:var(--alb)}
+.spec-row .ok{color:var(--verde)}
+.buy-row{display:flex;gap:12px;align-items:center;margin:24px 0}
+.qty{display:flex;align-items:center;border:1px solid var(--linie);border-radius:100px;overflow:hidden}
+.qty button{width:42px;height:46px;background:var(--carbune);border:none;color:var(--amber);font-size:1.2rem;cursor:pointer}
+.qty span{width:44px;text-align:center;font-family:var(--f-dot);font-weight:900;color:var(--alb)}
+.perks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0}
+.perk{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--gri)}
+.perk b{color:var(--amber);font-family:var(--f-mono);font-size:.9rem}
+.desc-box{background:var(--carbune);border:1px solid var(--linie);border-radius:14px;padding:24px;margin-top:30px}
+.desc-box h3{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.1rem;margin-bottom:12px}
+.desc-box p{color:var(--gri);font-size:.92rem;line-height:1.7}
+.seal-row{display:flex;gap:18px;align-items:center;background:var(--fum);border:1px solid rgba(245,158,11,.2);border-radius:14px;padding:20px;margin-top:24px}
+.seal-row p{font-size:.86rem;color:var(--alb)}.seal-row p span{color:var(--gri)}
+.related{padding:0 4vw 90px;max-width:1200px;margin:0 auto}
+.partner-mini{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.partner-mini img{height:22px;background:var(--alb);border-radius:5px;padding:3px 7px}
+</style>
+</head>
+<body>
+<nav id="nav"></nav>
+
+<main class="pdp" id="pdp"></main>
+<section class="related">
+  <div class="sec-head reveal"><h2 class="sec-title">Curse <em>similare</em></h2></div>
+  <div class="pgrid" id="related"></div>
+</section>
+
+<footer id="footer"></footer>
+
+<script src="data/catalog.js"></script>
+<script src="app.js"></script>
+<script>
+renderNav('catalog.html');
+renderFooter(document.getElementById('footer'));
+
+const p=byId(qs('id'))||P[0];
+document.title=`${p.brand} ${p.name} — YZZY`;
+const sale=p.on_sale&&p.regular>p.price;
+const catLabel=(CATS.find(c=>c.key===p.cat)||{}).label||'Catalog';
+let qty=1;
+
+document.getElementById('pdp').innerHTML=`
+<div class="crumb"><a href="index.html">Acasă</a> / <a href="catalog.html?cat=${p.cat}">${catLabel}</a> / ${p.name}</div>
+<div class="pdp-grid">
+  <div class="gallery">
+    <div class="gmain scan" id="gmain">
+      <span class="scan-badge">[ TESTAT · GATA DE ÎMBARCARE ]</span>
+      <img id="gimg" src="${p.imgs[0]}" alt="${p.name}">
+    </div>
+    <div class="gthumbs" id="gthumbs">
+      ${p.imgs.map((src,i)=>`<div class="gthumb${i===0?' active':''}" data-i="${i}"><img src="${src}" alt=""></div>`).join('')}
+    </div>
+  </div>
+  <div>
+    <div class="brand-line">${p.brand||'YZZY'} · ${catLabel} · Cod ${p.id.slice(0,14).toUpperCase()}</div>
+    <h1>${p.brand?p.brand+' ':''}${p.name}</h1>
+    <div class="price-row">
+      <span class="now">${fmtLei(p.price)}</span>
+      ${sale?`<span class="old">${fmtLei(p.regular)}</span><span class="save">−${Math.round((1-p.price/p.regular)*100)}%</span>`:''}
+    </div>
+    <div class="rate-hint">sau <b>${fmtLei(Math.round(p.price/12))}</b>/lună în 12 rate fără dobândă · <a href="rate.html">vezi finanțarea →</a></div>
+    <div class="spec-board">
+      <div class="spec-row"><span>Stare</span><span class="ok">${p.condition}</span></div>
+      <div class="spec-row"><span>Garanție</span><span>2 ani (24 luni)</span></div>
+      <div class="spec-row"><span>Control tehnic</span><span class="ok">[ TRECUT ]</span></div>
+      <div class="spec-row"><span>Livrare</span><span>24h · gratuită</span></div>
+      <div class="spec-row"><span>Retur</span><span>30 de zile</span></div>
+    </div>
+    <div class="buy-row">
+      <div class="qty"><button id="qMinus" aria-label="Mai puțin">−</button><span id="qVal">1</span><button id="qPlus" aria-label="Mai mult">+</button></div>
+      <button class="btn btn-amber" id="addBtn" style="flex:1">Adaugă în coș →</button>
+    </div>
+    <div class="perks">
+      <div class="perk"><b>✓</b><span>Garanție 2 ani, ca la produsele noi</span></div>
+      <div class="perk"><b>✓</b><span>Retur gratuit 30 de zile, fără explicații</span></div>
+      <div class="perk"><b>✓</b><span>Livrare în 24h, colet asigurat</span></div>
+      <div class="perk"><b>✓</b><span>Testat de tehnicieni, nu de o ștampilă</span></div>
+    </div>
+    <div class="seal-row">
+      ${sealHTML()}
+      <p><b>Niciun telefon nu decolează netestat.</b><br><span>Acest dispozitiv a fost deschis, testat bucată cu bucată și igienizat în service-ul YZZY din Suceava înainte de a fi pus la vânzare.</span></p>
+    </div>
+    <div class="partner-mini">
+      <img src="https://yzzy.ro/wp-content/uploads/2025/02/logo-unicredit-contrast-alb-2.jpg" alt="UniCredit">
+      <img src="https://yzzy.ro/wp-content/uploads/2025/02/Logo-Smart-by-BT-Direct-1-300x115.webp" alt="Smart by BT">
+      <img src="https://yzzy.ro/wp-content/uploads/2025/06/LP-logo-small-300x86.png" alt="LeanPay">
+      <img src="https://yzzy.ro/wp-content/uploads/2025/02/tbi-bank-logo.webp" alt="TBI Bank">
+    </div>
+  </div>
+</div>
+${p.desc||p.short?`<div class="desc-box"><h3>Despre această cursă</h3><p>${p.desc||p.short}</p></div>`:''}`;
+
+// galerie
+const gimg=document.getElementById('gimg');
+document.getElementById('gthumbs').addEventListener('click',e=>{
+  const t=e.target.closest('.gthumb');if(!t)return;
+  document.querySelectorAll('.gthumb').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  gimg.src=p.imgs[+t.dataset.i];
+  const gm=document.getElementById('gmain');gm.classList.remove('scanning');void gm.offsetWidth;gm.classList.add('scanning');
+});
+// scan la intrare
+const gm=document.getElementById('gmain');
+setTimeout(()=>gm.classList.add('scanning'),400);
+
+// qty + add
+const qVal=document.getElementById('qVal');
+document.getElementById('qMinus').addEventListener('click',()=>{qty=Math.max(1,qty-1);qVal.textContent=qty});
+document.getElementById('qPlus').addEventListener('click',()=>{qty++;qVal.textContent=qty});
+document.getElementById('addBtn').addEventListener('click',()=>addToCart(p.id,qty));
+
+// similare
+const rel=P.filter(x=>x.cat===p.cat&&x.id!==p.id).slice(0,4);
+const relEl=document.getElementById('related');
+relEl.innerHTML=rel.map(cardHTML).join('');
+bindAddButtons(relEl);initSpotlight(relEl);
+initReveal();
+</script>
+</body>
+</html>

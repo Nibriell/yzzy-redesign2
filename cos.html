@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check-in — Coșul tău · YZZY</title>
+<link rel="stylesheet" href="theme.css">
+<style>
+.cos{padding:120px 4vw 90px;max-width:1100px;margin:0 auto}
+.cos h1{font-size:clamp(2rem,5vw,3.6rem);margin-bottom:8px}
+.cos-sub{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gri);margin-bottom:40px}
+.cos-grid{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+@media(max-width:900px){.cos-grid{grid-template-columns:1fr}}
+.ci-item{display:grid;grid-template-columns:90px 1fr auto;gap:18px;align-items:center;background:var(--carbune);border:1px solid var(--linie);border-radius:14px;padding:16px;margin-bottom:12px}
+.ci-thumb{width:90px;height:90px;border-radius:10px;background:#141416;display:grid;place-items:center;padding:10px}
+.ci-thumb img{max-width:100%;max-height:100%;object-fit:contain}
+.ci-info b{display:block;font-size:1rem;margin-bottom:4px}
+.ci-info .meta{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gri)}
+.ci-info .price{font-family:var(--f-dot);font-weight:900;color:var(--amber);margin-top:8px;font-size:1.1rem}
+.ci-right{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.ci-right .qty{display:flex;align-items:center;border:1px solid var(--linie);border-radius:100px;overflow:hidden}
+.ci-right .qty button{width:34px;height:36px;background:var(--carbune);border:none;color:var(--amber);cursor:pointer}
+.ci-right .qty span{width:34px;text-align:center;font-family:var(--f-dot);font-weight:900}
+.ci-right .rm{background:none;border:none;color:var(--gri);font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.ci-right .rm:hover{color:var(--rosu)}
+.summary{background:var(--carbune);border:1px solid var(--linie);border-radius:16px;padding:26px;position:sticky;top:90px}
+.summary h3{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.15rem;margin-bottom:18px}
+.sum-row{display:flex;justify-content:space-between;padding:9px 0;font-size:.9rem;color:var(--gri)}
+.sum-row.total{border-top:1px solid var(--linie);margin-top:8px;padding-top:16px;font-family:var(--f-dot);font-weight:900;font-size:1.3rem;color:var(--alb)}
+.sum-row.total span:last-child{color:var(--amber)}
+.sum-perks{margin:18px 0;display:flex;flex-direction:column;gap:8px}
+.sum-perks div{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gri)}
+.sum-perks b{color:var(--verde)}
+.empty-cos{text-align:center;padding:60px 0}
+.empty-cos .big{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:2rem;color:var(--gri);margin-bottom:14px}
+.rate-pills{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+.rate-pills img{height:20px;background:var(--alb);border-radius:5px;padding:2px 6px}
+</style>
+</head>
+<body>
+<nav id="nav"></nav>
+
+<main class="cos">
+  <span class="sec-num" style="display:block;margin-bottom:12px">CHECK-IN</span>
+  <h1 class="display">Coșul <em class="amber">tău</em></h1>
+  <p class="cos-sub" id="ciCount">— curse pregătite pentru îmbarcare</p>
+  <div id="cosBody"></div>
+</main>
+
+<footer id="footer"></footer>
+
+<script src="data/catalog.js"></script>
+<script src="app.js"></script>
+<script>
+renderNav('catalog.html');
+renderFooter(document.getElementById('footer'));
+
+function render(){
+  const body=document.getElementById('cosBody');
+  const items=cart.map(it=>({...it,p:byId(it.id)})).filter(x=>x.p);
+  document.getElementById('ciCount').textContent=items.length?`${items.reduce((s,i)=>s+i.qty,0)} curse pregătite pentru îmbarcare`:'Niciun bagaj la check-in';
+  if(!items.length){
+    body.innerHTML=`<div class="empty-cos"><div class="big">Coșul e gol.</div>
+      <p class="muted" style="margin-bottom:24px">Nicio cursă rezervată încă. Tabela e plină de destinații.</p>
+      <a class="btn btn-amber" href="catalog.html">Vezi cursele →</a></div>`;
+    return;
+  }
+  const total=cartTotal();
+  body.innerHTML=`<div class="cos-grid">
+    <div id="ciList">${items.map(({p,qty})=>`
+      <div class="ci-item" data-id="${p.id}">
+        <a class="ci-thumb" href="produs.html?id=${p.id}"><img src="${p.thumb}" alt=""></a>
+        <div class="ci-info">
+          <b>${p.brand?p.brand+' ':''}${p.name}</b>
+          <span class="meta">[ ${p.condition} · Garanție 2 ani ]</span>
+          <span class="price">${fmtLei(p.price)}</span>
+        </div>
+        <div class="ci-right">
+          <div class="qty"><button data-act="minus">−</button><span>${qty}</span><button data-act="plus">+</button></div>
+          <button class="rm" data-act="rm">× scoate</button>
+        </div>
+      </div>`).join('')}</div>
+    <aside class="summary">
+      <h3>Boarding pass</h3>
+      <div class="sum-row"><span>Subtotal (${items.reduce((s,i)=>s+i.qty,0)} produse)</span><span>${fmtLei(total)}</span></div>
+      <div class="sum-row"><span>Livrare</span><span class="amber">Gratuită · 24h</span></div>
+      <div class="sum-row total"><span>Total</span><span>${fmtLei(total)}</span></div>
+      <div class="sum-perks">
+        <div><b>✓</b> Garanție 2 ani inclusă</div>
+        <div><b>✓</b> Retur gratuit 30 de zile</div>
+        <div><b>✓</b> Plată în rate 0% disponibilă</div>
+      </div>
+      <a class="btn btn-amber" href="plata.html" style="width:100%;justify-content:center">Spre îmbarcare →</a>
+      <div class="rate-pills">
+        <img src="https://yzzy.ro/wp-content/uploads/2025/02/logo-unicredit-contrast-alb-2.jpg" alt="UniCredit">
+        <img src="https://yzzy.ro/wp-content/uploads/2025/02/Logo-Smart-by-BT-Direct-1-300x115.webp" alt="Smart by BT">
+        <img src="https://yzzy.ro/wp-content/uploads/2025/06/LP-logo-small-300x86.png" alt="LeanPay">
+        <img src="https://yzzy.ro/wp-content/uploads/2025/02/tbi-bank-logo.webp" alt="TBI">
+      </div>
+    </aside>
+  </div>`;
+  document.getElementById('ciList').addEventListener('click',e=>{
+    const btn=e.target.closest('[data-act]');if(!btn)return;
+    const id=btn.closest('.ci-item').dataset.id;
+    const it=cart.find(x=>x.id===id);if(!it)return;
+    if(btn.dataset.act==='plus')setQty(id,it.qty+1);
+    else if(btn.dataset.act==='minus')setQty(id,it.qty-1);
+    else setQty(id,0);
+    render();
+  });
+}
+render();
+</script>
+</body>
+</html>

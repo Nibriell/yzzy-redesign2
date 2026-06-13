@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Service iPhone & Samsung — YZZY · Reparații cu piese originale</title>
+<meta name="description" content="Service GSM cu peste 13 ani experiență: înlocuire display, baterie, sticlă, cu piese originale. Garanție 90–180 zile, transport gratuit peste 1500 lei.">
+<link rel="stylesheet" href="theme.css">
+<style>
+.srv-hero{padding:130px 4vw 40px}
+.srv-hero h1{font-size:clamp(2.4rem,6vw,4.8rem);max-width:900px}
+.srv-hero p{color:var(--gri);max-width:480px;margin-top:18px}
+.srv-tabs{display:flex;gap:10px;padding:0 4vw;margin-bottom:34px}
+.srv-tab{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.1rem;padding:14px 26px;border-radius:100px;border:1px solid var(--linie);background:none;color:var(--gri);cursor:pointer;transition:all .2s}
+.srv-tab.active{background:var(--amber);color:var(--fum);border-color:var(--amber)}
+.srv-panel{display:none;padding:0 4vw 40px}
+.srv-panel.show{display:block}
+.srv-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:start}
+@media(max-width:900px){.srv-grid{grid-template-columns:1fr}}
+.svc-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.svc-list{grid-template-columns:1fr}}
+.svc{background:var(--carbune);border:1px solid var(--linie);border-radius:14px;padding:22px;transition:border-color .2s}
+.svc:hover{border-color:var(--amber)}
+.svc .ic{font-size:1.6rem;margin-bottom:14px}
+.svc h4{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.05rem;margin-bottom:6px}
+.svc p{color:var(--gri);font-size:.85rem}
+.srv-side{background:var(--fum);border:1px solid rgba(245,158,11,.2);border-radius:16px;padding:28px}
+.srv-side h3{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.2rem;margin-bottom:16px}
+.srv-fact{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--linie);font-size:.86rem}
+.srv-fact:last-child{border-bottom:none}
+.srv-fact span:first-child{color:var(--gri)}.srv-fact b{color:var(--amber);font-family:var(--f-mono);font-size:.78rem}
+.proc{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 4vw 40px;max-width:1000px}
+@media(max-width:760px){.proc{grid-template-columns:1fr}}
+.proc .p3{background:var(--carbune);border:1px solid var(--linie);border-radius:14px;padding:26px}
+.proc .p3 .n{font-family:var(--f-mono);color:var(--amber);font-size:.7rem;letter-spacing:.18em;display:block;margin-bottom:26px}
+.proc .p3 h4{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.05rem;margin-bottom:8px}
+.proc .p3 p{color:var(--gri);font-size:.86rem}
+</style>
+</head>
+<body>
+<nav id="nav"></nav>
+
+<header class="srv-hero grid-bg">
+  <span class="sec-num" style="display:block;margin-bottom:16px">SERVICE GSM · PESTE 13 ANI EXPERIENȚĂ</span>
+  <h1 class="display">Hangarul de <em class="amber">reparații</em></h1>
+  <p>Aducem la viață iPhone și Samsung cu piese originale și tehnologie profesională de laminare. Telefonul tău, ca după o revizie completă.</p>
+</header>
+
+<div class="srv-tabs">
+  <button class="srv-tab active" data-tab="iphone">Service iPhone</button>
+  <button class="srv-tab" data-tab="samsung" id="samsung">Service Samsung</button>
+</div>
+
+<section class="srv-panel show" data-panel="iphone" style="padding-top:0">
+  <div class="srv-grid">
+    <div class="svc-list">
+      <div class="svc"><div class="ic">📱</div><h4>Înlocuire display</h4><p>Ecran nou, montat și laminat profesional. În medie 90 de minute de intervenție.</p></div>
+      <div class="svc"><div class="ic">🔋</div><h4>Înlocuire baterie</h4><p>Baterie nouă care îți readuce telefonul la autonomia de odinioară.</p></div>
+      <div class="svc"><div class="ic">🪟</div><h4>Înlocuire sticlă</h4><p>Specialitatea noastră: dacă display-ul funcționează, schimbăm doar sticla.</p></div>
+      <div class="svc"><div class="ic">🔧</div><h4>Reparații generale</h4><p>Diagnoză și reparație pentru orice model iPhone, cu piese de calitate.</p></div>
+    </div>
+    <aside class="srv-side">
+      <h3>Pe scurt</h3>
+      <div class="srv-fact"><span>Experiență</span><b>13+ ani GSM</b></div>
+      <div class="srv-fact"><span>Durată intervenție</span><b>~90 min</b></div>
+      <div class="srv-fact"><span>Proces complet</span><b>3 zile cu transport</b></div>
+      <div class="srv-fact"><span>Garanție</span><b>90–180 zile</b></div>
+      <div class="srv-fact"><span>Transport gratuit</span><b>peste 1500 lei</b></div>
+      <a class="btn btn-amber" href="https://wa.me/+40761053053" style="width:100%;justify-content:center;margin-top:18px">Cere o reparație →</a>
+    </aside>
+  </div>
+</section>
+
+<section class="srv-panel" data-panel="samsung" style="padding-top:0">
+  <div class="srv-grid">
+    <div class="svc-list">
+      <div class="svc"><div class="ic">📱</div><h4>Înlocuire display Samsung</h4><p>Piese originale Samsung, montate cu tehnologie folosită și în fabrici.</p></div>
+      <div class="svc"><div class="ic">🔋</div><h4>Înlocuire baterie</h4><p>Autonomie ca nouă, cu componente originale și testare completă.</p></div>
+      <div class="svc"><div class="ic">🪟</div><h4>Reparație sticlă</h4><p>Înlocuim sticla spartă păstrând display-ul funcțional, unde e posibil.</p></div>
+      <div class="svc"><div class="ic">🔧</div><h4>Reparații generale</h4><p>Curățare, testare și reparație profesională pentru orice model Samsung.</p></div>
+    </div>
+    <aside class="srv-side">
+      <h3>Pe scurt</h3>
+      <div class="srv-fact"><span>Experiență</span><b>15+ ani GSM</b></div>
+      <div class="srv-fact"><span>Piese</span><b>Originale Samsung</b></div>
+      <div class="srv-fact"><span>Proces complet</span><b>max. 3 zile</b></div>
+      <div class="srv-fact"><span>Garanție</span><b>90–180 zile</b></div>
+      <div class="srv-fact"><span>Transport gratuit</span><b>peste 1500 lei</b></div>
+      <a class="btn btn-amber" href="https://wa.me/+40761053053" style="width:100%;justify-content:center;margin-top:18px">Cere o reparație →</a>
+    </aside>
+  </div>
+</section>
+
+<div class="sec-head reveal" style="padding:30px 4vw 0;margin-bottom:30px">
+  <h2 class="sec-title">Trei <em>pași</em></h2>
+  <span class="sec-num">CUM TRIMITI TELEFONUL</span>
+</div>
+<div class="proc">
+  <div class="p3 reveal"><span class="n">01</span><h4>Selectezi defectul</h4><p>Ne spui modelul și ce nu funcționează, pe WhatsApp sau telefonic.</p></div>
+  <div class="p3 reveal"><span class="n">02</span><h4>Trimiți prin curier</h4><p>Din orice localitate din România. Transport gratuit la comenzi peste 1500 lei.</p></div>
+  <div class="p3 reveal"><span class="n">03</span><h4>Primești telefonul</h4><p>Reparat, testat și curățat, cu garanție inclusă. De regulă în 3 zile.</p></div>
+</div>
+
+<footer id="footer"></footer>
+
+<script src="data/catalog.js"></script>
+<script src="app.js"></script>
+<script>
+renderNav('service.html');
+renderFooter(document.getElementById('footer'));
+document.querySelectorAll('.srv-tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.srv-tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.querySelectorAll('.srv-panel').forEach(p=>p.classList.toggle('show',p.dataset.panel===t.dataset.tab));
+}));
+if(location.hash==='#samsung'){document.querySelector('[data-tab="samsung"]').click()}
+initReveal();
+</script>
+</body>
+</html>

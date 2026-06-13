@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — YZZY · Suceava</title>
+<meta name="description" content="Contactează YZZY: telefon 0761 053 053, WhatsApp, email, sediu în Suceava, Str. Ana Ipătescu nr. 5.">
+<link rel="stylesheet" href="theme.css">
+<style>
+.ct-hero{padding:130px 4vw 40px}
+.ct-hero h1{font-size:clamp(2.4rem,6vw,4.8rem)}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:20px 4vw 90px}
+@media(max-width:900px){.ct-grid{grid-template-columns:1fr}}
+.ct-card{background:var(--carbune);border:1px solid var(--linie);border-radius:16px;padding:32px}
+.ct-card h3{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.2rem;margin-bottom:20px}
+.ct-item{display:flex;gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid var(--linie);text-decoration:none;color:var(--alb);transition:color .2s}
+.ct-item:last-child{border-bottom:none}
+.ct-item:hover{color:var(--amber)}
+.ct-item .ic{width:44px;height:44px;border-radius:50%;border:1px solid var(--linie);display:grid;place-items:center;font-size:1.2rem;flex:none;color:var(--amber)}
+.ct-item .lbl{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gri);display:block;margin-bottom:2px}
+.ct-item b{font-size:1.02rem;font-weight:500}
+.socials{display:flex;gap:10px;margin-top:20px}
+.socials a{flex:1;text-align:center;border:1px solid var(--linie);border-radius:100px;padding:11px;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gri);text-decoration:none;transition:all .2s}
+.socials a:hover{border-color:var(--amber);color:var(--amber)}
+.map-card{background:var(--fum);border:1px solid rgba(245,158,11,.2);border-radius:16px;padding:32px;display:flex;flex-direction:column}
+.map-vis{flex:1;min-height:220px;border-radius:12px;border:1px solid var(--linie);background:
+  linear-gradient(rgba(245,158,11,.08) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(245,158,11,.08) 1px,transparent 1px);
+  background-size:40px 40px;background-color:var(--abis);position:relative;margin-bottom:20px;overflow:hidden}
+.map-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.map-pin .dot{width:18px;height:18px;border-radius:50%;background:var(--amber);margin:0 auto 8px;box-shadow:0 0 0 8px rgba(245,158,11,.2),0 0 30px rgba(245,158,11,.6)}
+.map-pin span{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.hours{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;color:var(--gri)}
+.hours b{color:var(--alb)}
+.legal-strip{padding:0 4vw 90px;max-width:1200px;margin:0 auto}
+.legal-strip .lbox{background:var(--carbune);border:1px solid var(--linie);border-radius:14px;padding:24px;display:flex;gap:30px;flex-wrap:wrap;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.06em;color:var(--gri)}
+.legal-strip .lbox b{color:var(--amber);display:block;margin-bottom:4px}
+</style>
+</head>
+<body>
+<nav id="nav"></nav>
+
+<header class="ct-hero grid-bg">
+  <span class="sec-num" style="display:block;margin-bottom:16px">TURNUL DE CONTROL · CONTACT</span>
+  <h1 class="display">Vorbește cu <em class="amber">echipa.</em></h1>
+</header>
+
+<div class="ct-grid">
+  <div class="ct-card reveal">
+    <h3>Canale directe</h3>
+    <a class="ct-item" href="tel:0761053053"><span class="ic">☎</span><span><span class="lbl">Telefon</span><b>0761 053 053</b></span></a>
+    <a class="ct-item" href="https://wa.me/+40761053053"><span class="ic">▣</span><span><span class="lbl">WhatsApp</span><b>0761 053 053</b></span></a>
+    <a class="ct-item" href="mailto:contact@yzzy.ro"><span class="ic">✉</span><span><span class="lbl">Email</span><b>contact@yzzy.ro</b></span></a>
+    <a class="ct-item" href="https://yzzy.ro/contact/" target="_blank" rel="noopener"><span class="ic">⌖</span><span><span class="lbl">Adresă</span><b>Suceava, Str. Ana Ipătescu, Nr. 5</b></span></a>
+    <div class="socials">
+      <a href="https://www.instagram.com/yzzy.ro/">Instagram</a>
+      <a href="https://www.tiktok.com/@yzzy.ro">TikTok</a>
+      <a href="https://www.facebook.com/yzzy.mobile">Facebook</a>
+      <a href="https://www.youtube.com/@yzzy.mobile">YouTube</a>
+    </div>
+  </div>
+  <div class="map-card reveal">
+    <h3 style="font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.2rem;margin-bottom:18px">Hangarul YZZY</h3>
+    <div class="map-vis"><div class="map-pin"><div class="dot"></div><span>YZZY · Suceava</span></div></div>
+    <p class="hours"><b>Program:</b> Luni–Vineri 09:00–18:00 · Sâmbătă 10:00–14:00</p>
+    <p class="hours" style="margin-top:6px"><b>Service & ridicări:</b> la sediu sau prin curier, oriunde în România.</p>
+    <a class="btn btn-amber" href="https://wa.me/+40761053053" style="margin-top:20px;justify-content:center">Scrie-ne pe WhatsApp →</a>
+  </div>
+</div>
+
+<div class="legal-strip reveal">
+  <div class="lbox">
+    <div><b>Firmă</b>YZZY MOBILE SRL</div>
+    <div><b>CUI</b>RO44982632</div>
+    <div><b>Reg. Com.</b>J33/1848/29.09.2021</div>
+    <div><b>Sediu</b>Suceava, Str. Ana Ipătescu nr. 5</div>
+    <div><b>ANPC</b><a href="https://anpc.ro/" target="_blank" rel="noopener" style="color:var(--gri)">anpc.ro</a></div>
+  </div>
+</div>
+
+<footer id="footer"></footer>
+
+<script src="data/catalog.js"></script>
+<script src="app.js"></script>
+<script>
+renderNav('contact.html');
+renderFooter(document.getElementById('footer'));
+initReveal();
+</script>
+</body>
+</html>
