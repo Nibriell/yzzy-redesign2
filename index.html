@@ -36,6 +36,16 @@
 @media(max-width:900px){.test-wrap{grid-template-columns:1fr}}
 .test-visual{background:var(--carbune);border:1px solid var(--linie);border-radius:16px;padding:34px;display:grid;place-items:center;position:relative}
 .test-visual img{max-height:300px;filter:brightness(.95)}
+/* ---------- tomografie X-ray ---------- */
+.xray-scan{position:relative;width:min(244px,62vw);aspect-ratio:848/1264;border-radius:16px;overflow:hidden;background:#060606;cursor:pointer;box-shadow:0 0 0 1px var(--linie),0 24px 60px -28px rgba(0,0,0,.9)}
+.xray-scan img{position:absolute!important;inset:0;width:100%;height:100%;max-height:none!important;object-fit:cover;filter:none!important;user-select:none;-webkit-user-drag:none}
+.xray-scan .xr-xray{clip-path:inset(0 0 100% 0);transform:scale(.93);transform-origin:center;will-change:clip-path}
+.xray-scan .xr-beam{position:absolute;left:0;right:0;height:70px;pointer-events:none;opacity:0;background:linear-gradient(to bottom,rgba(251,191,36,0),rgba(251,191,36,.07) 55%,rgba(251,191,36,.22));mix-blend-mode:screen}
+.xray-scan .xr-line{position:absolute;left:-5%;right:-5%;height:3px;opacity:0;pointer-events:none;background:linear-gradient(90deg,transparent,var(--amber-aprins,#FBBF24),#fff,var(--amber-aprins,#FBBF24),transparent);box-shadow:0 0 26px 4px rgba(251,191,36,.9),0 0 8px 1px rgba(255,255,255,.7)}
+.xray-scan .xr-hud{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:.56rem;letter-spacing:.1em;color:var(--verde);opacity:0;transition:opacity .4s;text-shadow:0 0 10px rgba(74,222,128,.5);pointer-events:none}
+.xray-scan.on .xr-hud{opacity:1}
+.xray-scan .xr-hint{position:absolute;top:12px;right:12px;font-family:var(--f-mono);font-size:.5rem;letter-spacing:.14em;color:var(--gri);opacity:.55;pointer-events:none;transition:opacity .3s}
+.xray-scan.on .xr-hint{opacity:0}
 .test-steps{display:flex;flex-direction:column;gap:0}
 .tstep{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--linie)}
 .tstep:last-child{border-bottom:none}
@@ -117,9 +127,15 @@
     <span class="sec-num">02 / CONTROL TEHNIC</span>
   </div>
   <div class="test-wrap">
-    <div class="test-visual scan" id="scanBox">
-      <img id="scanImg" src="" alt="Telefon în control tehnic">
-      <span class="mono" style="position:absolute;bottom:16px;left:20px;font-size:.6rem;color:var(--verde)" id="scanTags"></span>
+    <div class="test-visual" id="scanBox">
+      <div class="xray-scan" id="xrayScan" title="Scanare tomografică">
+        <img class="xr-base" src="assets/iphone17-front.png?v=1" alt="iPhone în control tehnic">
+        <img class="xr-xray" src="assets/iphone17-xray.png?v=1" alt="Tomografie internă a dispozitivului" aria-hidden="true">
+        <div class="xr-beam"></div>
+        <div class="xr-line"></div>
+        <span class="xr-hud mono" id="scanTags"></span>
+        <span class="xr-hint">SCAN ↺</span>
+      </div>
     </div>
     <div>
       <div class="test-steps">
@@ -226,16 +242,50 @@ newGrid.innerHTML=P.filter(p=>p.cat==='telefoane').slice(0,4).concat(P.filter(p=
 bindAddButtons(newGrid);
 initSpotlight(newGrid);
 
-// control tehnic: scanare pe un produs real
-const scanP=P.find(p=>p.cat==='telefoane');
-document.getElementById('scanImg').src=scanP.imgs[0];
-const scanBox=document.getElementById('scanBox'),scanTags=document.getElementById('scanTags');
-const sio=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;sio.unobserve(e.target);
-  scanBox.classList.add('scanning');
-  setTimeout(()=>{scanTags.textContent='[ BATERIE OK ] [ ECRAN OK ] [ DEBLOCAT ]'},900);
-}),{threshold:.5});
-sio.observe(scanBox);
+// control tehnic: tomografie X-ray (scanare → dezvăluie internele → revine la poză)
+(function(){
+  const wrap=document.getElementById('xrayScan');
+  if(!wrap)return;
+  const xray=wrap.querySelector('.xr-xray'),line=wrap.querySelector('.xr-line'),beam=wrap.querySelector('.xr-beam'),hud=document.getElementById('scanTags');
+  if(hud)hud.textContent='[ BATERIE 92% ]  [ ECRAN ORIGINAL ]  [ DEBLOCAT ]';
+  const DOWN=1750,HOLD=1300,UP=1050,GAP=1700; // ms
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+  let running=false,autoLoop=true;
+  function setP(p){ // p:0..1 = fracțiune dezvăluită de sus în jos
+    xray.style.clipPath='inset(0 0 '+((1-p)*100).toFixed(2)+'% 0)';
+    const y=p*100;
+    line.style.top=y+'%';
+    beam.style.top='calc('+y+'% - 70px)';
+  }
+  function run(){
+    if(running)return;running=true;
+    wrap.classList.add('on');
+    line.style.opacity='1';beam.style.opacity='1';
+    const t0=performance.now();
+    (function down(){
+      const t=Math.min(1,(performance.now()-t0)/DOWN);setP(ease(t));
+      if(t<1){requestAnimationFrame(down);}
+      else{setTimeout(()=>{
+        const t1=performance.now();
+        (function up(){
+          const t=Math.min(1,(performance.now()-t1)/UP);setP(1-ease(t));
+          if(t<1){requestAnimationFrame(up);}
+          else{line.style.opacity='0';beam.style.opacity='0';wrap.classList.remove('on');running=false;
+            if(autoLoop)setTimeout(run,GAP);}
+        })();
+      },HOLD);}
+    })();
+  }
+  setP(0);
+  if(reduce){ // fără mișcare: arată direct tomografia, fără buclă
+    setP(1);wrap.classList.add('on');autoLoop=false;
+  }else{
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.unobserve(e.target);run();}}),{threshold:.45});
+    io.observe(wrap);
+  }
+  wrap.addEventListener('click',()=>{if(!running){autoLoop=true;run();}});
+})();
 
 // FAQ
 document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{
