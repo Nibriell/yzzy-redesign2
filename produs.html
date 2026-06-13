@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Produs — YZZY</title>
-<link rel="stylesheet" href="theme.css?v=2">
+<link rel="stylesheet" href="theme.css?v=3">
 <style>
 .pdp{padding:120px 4vw 90px;max-width:1200px;margin:0 auto}
 .crumb{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gri);margin-bottom:28px}
@@ -60,8 +60,8 @@
 
 <footer id="footer"></footer>
 
-<script src="data/catalog.js?v=2"></script>
-<script src="app.js?v=2"></script>
+<script src="data/catalog.js?v=3"></script>
+<script src="app.js?v=3"></script>
 <script>
 renderNav('catalog.html');
 renderFooter(document.getElementById('footer'));
@@ -91,7 +91,7 @@ document.getElementById('pdp').innerHTML=`
       <span class="now">${fmtLei(p.price)}</span>
       ${sale?`<span class="old">${fmtLei(p.regular)}</span><span class="save">−${Math.round((1-p.price/p.regular)*100)}%</span>`:''}
     </div>
-    <div class="rate-hint">sau <b>${fmtLei(Math.round(p.price/12))}</b>/lună în 12 rate fără dobândă · <a href="rate.html">vezi finanțarea →</a></div>
+    <div class="rate-hint">disponibil și în rate prin UniCredit, BT, LeanPay sau TBI · <a href="rate.html">vezi finanțarea →</a></div>
     <div class="spec-board">
       <div class="spec-row"><span>Stare</span><span class="ok">${p.condition}</span></div>
       <div class="spec-row"><span>Garanție</span><span>2 ani (24 luni)</span></div>

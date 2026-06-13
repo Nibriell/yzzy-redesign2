@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Îmbarcare — Finalizează comanda · YZZY</title>
-<link rel="stylesheet" href="theme.css?v=2">
+<link rel="stylesheet" href="theme.css?v=3">
 <style>
 .pay{padding:120px 4vw 90px;max-width:1100px;margin:0 auto}
 .pay h1{font-size:clamp(2rem,5vw,3.4rem);margin-bottom:8px}
@@ -74,8 +74,8 @@ input:focus,select:focus{border-color:var(--amber)}
 
 <footer id="footer"></footer>
 
-<script src="data/catalog.js?v=2"></script>
-<script src="app.js?v=2"></script>
+<script src="data/catalog.js?v=3"></script>
+<script src="app.js?v=3"></script>
 <script>
 renderNav('catalog.html');
 renderFooter(document.getElementById('footer'));
@@ -109,7 +109,7 @@ if(!items.length){
         <div class="pay-methods">
           <label class="pm active"><input type="radio" name="pm" value="card" checked><span class="pm-label"><b>Card online</b><span>Plată securizată Netopia</span></span></label>
           <label class="pm"><input type="radio" name="pm" value="ramburs"><span class="pm-label"><b>Ramburs la livrare</b><span>Plătești curierului</span></span></label>
-          <label class="pm" id="pmRate"><input type="radio" name="pm" value="rate"><span class="pm-label"><b>Rate fără dobândă</b><span>Aprobare în câteva minute, 100% online</span></span></label>
+          <label class="pm" id="pmRate"><input type="radio" name="pm" value="rate"><span class="pm-label"><b>Plata în rate</b><span>Aprobare în câteva minute, 100% online</span></span></label>
         </div>
         <div class="rate-detail" id="rateDetail">
           <p class="hint">Alege finanțatorul (te ducem pe pagina lui)</p>
@@ -120,7 +120,8 @@ if(!items.length){
             <a href="https://yzzy.ro/" target="_blank" rel="noopener"><img src="https://yzzy.ro/wp-content/uploads/2025/02/tbi-bank-logo.webp" alt="TBI Bank"></a>
           </div>
           <div class="rate-months" id="rateMonths"></div>
-          <div>Rată estimată: <span class="rate-out" id="rateOut"></span> <span class="muted mono" style="font-size:.6rem">/lună · dobândă 0%</span></div>
+          <div>Cost împărțit la rate: <span class="rate-out" id="rateOut"></span> <span class="muted mono" style="font-size:.6rem">/lună · estimare orientativă*</span></div>
+          <p class="muted mono" style="font-size:.54rem;margin-top:8px;line-height:1.5">* Prețul împărțit la numărul de rate. Rata reală include dobânda și DAE stabilite de finanțator (ex. UniCredit: dobândă fixă 11–25%/an, DAE 14,93–46,01%).</p>
         </div>
       </div>
     </div>

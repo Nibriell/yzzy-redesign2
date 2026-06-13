@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rate fără dobândă — YZZY · UniCredit, BT, LeanPay, TBI</title>
-<meta name="description" content="Plata în rate 0% prin UniCredit Consumer Financing, Smart by BT Direct, LeanPay și TBI Bank. Credit 100% online, aprobat în minute.">
-<link rel="stylesheet" href="theme.css?v=2">
+<title>Plata în rate — YZZY · UniCredit, BT, LeanPay, TBI</title>
+<meta name="description" content="Plata în rate prin UniCredit Consumer Financing, Smart by BT Direct, LeanPay și TBI Bank. Credit 100% online, aprobat în minute.">
+<link rel="stylesheet" href="theme.css?v=3">
 <style>
 .rate-hero{padding:130px 4vw 40px;text-align:center}
 .rate-hero h1{font-size:clamp(2.4rem,6.5vw,5rem);max-width:900px;margin:0 auto 18px}
@@ -39,8 +39,8 @@
 <nav id="nav"></nav>
 
 <header class="rate-hero grid-bg">
-  <span class="sec-num" style="display:block;margin-bottom:16px">04 / RATE 0%</span>
-  <h1 class="display">Plătești în rate. <em class="amber">Zero dobândă.</em></h1>
+  <span class="sec-num" style="display:block;margin-bottom:16px">04 / FINANȚARE</span>
+  <h1 class="display">Plata în rate. <em class="amber">100% online.</em></h1>
   <p>Credit 100% online prin patru parteneri bancari, aprobat în câteva minute. Fără hârtii de semnat, fără drumuri la bancă.</p>
 
   <div class="calc">
@@ -49,8 +49,9 @@
     <div class="calc-row"><label>Număr de rate</label><input type="range" id="months" min="3" max="36" step="3" value="12"><span class="val" id="monthsV"></span></div>
     <div class="calc-result">
       <div class="big" id="rateBig"></div>
-      <div class="lbl">pe lună · dobândă 0% · fără costuri ascunse</div>
+      <div class="lbl">prețul împărțit la rate · estimare orientativă*</div>
     </div>
+    <p class="muted mono" style="font-size:.56rem;margin-top:16px;text-align:center;line-height:1.6">* Estimare orientativă. Rata reală include dobânda și DAE stabilite de finanțator — ex. UniCredit: dobândă fixă 11–25%/an, DAE 14,93–46,01%, comision lunar 10 lei. Promoțiile active sunt reduceri de preț: LeanPay −10%, UniCredit −6%.</p>
   </div>
 </header>
 
@@ -68,7 +69,7 @@
       <div>
         <h3>UniCredit Consumer Financing</h3>
         <p>Creditul 100% online: alegi această metodă de plată din coș și finalizezi totul digital.</p>
-        <div class="facts"><span class="fact">◆ 100% online</span><span class="fact">◆ Aprobare rapidă</span><span class="fact">◆ Dobândă 0%</span></div>
+        <div class="facts"><span class="fact">◆ 100% online</span><span class="fact">◆ Aprobare rapidă</span><span class="fact">◆ Dobândă fixă 11–25%/an</span></div>
       </div>
       <a class="btn btn-amber" href="https://yzzy.ro/credit-100-online-prin-unicredit-consumer-financing/" target="_blank" rel="noopener">Detalii UniCredit →</a>
     </div>
@@ -130,8 +131,8 @@
 
 <footer id="footer"></footer>
 
-<script src="data/catalog.js?v=2"></script>
-<script src="app.js?v=2"></script>
+<script src="data/catalog.js?v=3"></script>
+<script src="app.js?v=3"></script>
 <script>
 renderNav('rate.html');
 renderTicker(document.getElementById('ticker'));
