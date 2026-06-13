@@ -12,12 +12,16 @@
 .hero-glow{position:absolute;top:-35%;right:-12%;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,.09),transparent 60%);pointer-events:none}
 .kicker{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:22px;display:flex;align-items:center;gap:12px}
 .kicker::before{content:"";width:30px;height:1px;background:var(--amber)}
-.hero h1{font-size:clamp(2.6rem,7.6vw,6.6rem);max-width:1100px}
-.hero-sub{color:var(--gri);max-width:430px;margin:24px 0 30px;font-size:1.02rem}
+.hero h1{font-size:clamp(2.2rem,5.6vw,5rem);max-width:1100px}
+.hero-sub{color:var(--gri);max-width:430px;margin:24px 0 14px;font-size:1.02rem}
 .hero-sub b{color:var(--alb)}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.trust-line{display:inline-block;white-space:nowrap;color:var(--galben);font-size:.66rem;letter-spacing:.14em;border:1px solid rgba(255,208,0,.3);border-radius:100px;padding:7px 15px;margin-bottom:30px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.hero-grid>*{min-width:0}
 @media(max-width:1000px){.hero-grid{grid-template-columns:1fr}}
-.hero-board .board-row .col-name{min-width:0}
+.hero-board{min-width:0}
+.hero-board .col-state{width:96px}
+.hero-board .col-name{flex:1.6}
 .blink{animation:blink 1.4s steps(2,start) infinite}
 @keyframes blink{50%{opacity:.25}}
 .term-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
@@ -72,18 +76,19 @@
     <div>
       <div class="kicker">Suceava · România · Non-stop</div>
       <h1 class="display">Următorul tău telefon e <em class="amber" id="flapHead">la îmbarcare.</em></h1>
-      <p class="hero-sub">Comanzi azi, aterizează mâine. Tehnologie recondiționată impecabil, cu <b>garanție 2 ani</b> și <b>retur gratuit 30 de zile</b>. <span class="mono" style="font-size:.65rem;color:var(--amber)">[ Niciun telefon nu decolează netestat ]</span></p>
+      <p class="hero-sub">Comanzi azi, aterizează mâine. Tehnologie recondiționată impecabil, cu <b>garanție 2 ani</b> și <b>retur gratuit 30 de zile</b>.</p>
+      <span class="trust-line mono">[ Niciun telefon nu decolează netestat ]</span>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
         <a class="btn btn-amber" href="catalog.html">Vezi cursele de azi →</a>
         <a class="btn btn-ghost" href="vinde.html">Vinde-l pe al tău</a>
       </div>
     </div>
-    <div class="hero-board reveal in">
+    <div class="hero-board reveal in" style="min-width:0">
       <div class="board">
-        <div class="board-row board-head"><span class="col-name">Cursa</span><span class="col-state">Stare</span><span class="col-tag">Control</span><span class="col-price">Preț</span></div>
+        <div class="board-row board-head"><span class="col-name">Cursa</span><span class="col-state">Stare</span><span class="col-price">Preț</span></div>
         <div id="arrivals"></div>
       </div>
-      <p class="mono" style="font-size:.58rem;color:var(--gri);margin-top:10px;text-align:right">Sosiri în timp real din stocul YZZY <span class="blink amber">●</span></p>
+      <p class="mono" style="font-size:.58rem;color:var(--gri);margin-top:10px;text-align:right">Sosiri în timp real din stocul YZZY <span class="blink galben">●</span></p>
     </div>
   </div>
 </header>
@@ -199,12 +204,11 @@ const arrivals=document.getElementById('arrivals');
 const picks=P.filter(p=>p.cat==='telefoane').slice(0,3).concat(P.filter(p=>p.cat==='laptopuri').slice(0,1),P.filter(p=>p.cat==='smartwatch').slice(0,1));
 arrivals.innerHTML=picks.map((p,i)=>`<a class="board-row" href="produs.html?id=${p.id}">
   <span class="col-name" data-flap>${p.brand} ${p.name}</span>
-  <span class="col-state">${i===picks.length-1?'<span class="amber">ÎMBARCARE</span>':'SOSIT'}</span>
-  <span class="col-tag">[ ${p.condition.toUpperCase()} · GARANȚIE 2 ANI ]</span>
+  <span class="col-state">${i===picks.length-1?'<span class="galben">ÎMBARCARE</span>':'SOSIT'}</span>
   <span class="col-price">${fmtLei(p.price)}</span></a>`).join('');
 document.querySelectorAll('[data-flap]').forEach((el,i)=>{
   const txt=el.textContent;
-  setTimeout(()=>flapText(el,txt.length>26?txt.slice(0,26):txt,40),300+i*240);
+  setTimeout(()=>flapText(el,txt.length>24?txt.slice(0,24):txt,38),200+i*150);
 });
 
 // terminale cu numar real de produse

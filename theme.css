@@ -10,6 +10,8 @@
   --amber:#F59E0B;
   --amber-aprins:#FBBF24;
   --amber-ars:#B45309;
+  --galben:#FFD000;
+  --galben-dim:#C2A005;
   --alb:#FAFAF9;
   --gri:#A1A1AA;
   --verde:#4ADE80;
@@ -30,6 +32,7 @@ img{max-width:100%}
 .mono{font-family:var(--f-mono);letter-spacing:.12em;text-transform:uppercase}
 .dot{font-family:var(--f-dot);font-weight:900}
 .amber{color:var(--amber)}
+.galben{color:var(--galben)}
 .muted{color:var(--gri)}
 
 /* grila tehnica de fundal */
@@ -45,6 +48,7 @@ nav.scrolled{background:rgba(6,6,6,.85);backdrop-filter:blur(16px);border-bottom
 .logo .tile{position:relative;display:grid;place-items:center;width:26px;height:34px;background:var(--grafit);border-radius:4px;font-family:var(--f-mono);font-weight:700;font-size:17px;color:var(--amber);overflow:hidden}
 .logo .tile::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--abis)}
 .logo .tile span{transition:transform .08s}
+.logo .tile.flapping{color:var(--galben);box-shadow:inset 0 0 0 1px rgba(255,208,0,.25)}
 .nav-links{display:flex;gap:24px;list-style:none}
 .nav-links a{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gri);text-decoration:none;transition:color .2s;padding:6px 0}
 .nav-links a:hover,.nav-links a.active{color:var(--amber)}
@@ -65,8 +69,8 @@ nav.scrolled{background:rgba(6,6,6,.85);backdrop-filter:blur(16px);border-bottom
 .ticker{background:var(--fum);border-top:1px solid rgba(245,158,11,.15);border-bottom:1px solid rgba(245,158,11,.15);overflow:hidden;padding:11px 0}
 .ticker-track{display:flex;gap:46px;width:max-content;animation:tick 30s linear infinite}
 .ticker-track:hover{animation-play-state:paused}
-.ticker-track span{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);white-space:nowrap}
-.ticker-track i{font-style:normal;color:var(--amber-ars)}
+.ticker-track span{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--galben);white-space:nowrap}
+.ticker-track i{font-style:normal;color:var(--galben-dim)}
 @keyframes tick{to{transform:translateX(-50%)}}
 
 /* ---------- sectiuni ---------- */
@@ -83,10 +87,10 @@ section{padding:90px 4vw;position:relative}
 .board-row{display:flex;gap:14px;align-items:center;padding:13px 20px;border-bottom:1px solid #1A1A1D;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:background .2s}
 .board-row:last-child{border-bottom:none}
 a.board-row:hover{background:var(--grafit)}
-.board-row .col-name{flex:2;color:var(--alb);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.board-row .col-name{flex:2;min-width:0;color:var(--alb);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .board-row .col-state{width:110px;color:var(--verde);flex:none}
-.board-row .col-tag{flex:1.4;color:var(--gri);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.board-row .col-price{color:var(--amber);font-family:var(--f-dot);font-weight:900;font-size:.95rem;flex:none}
+.board-row .col-tag{flex:1.4;min-width:0;color:var(--gri);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.board-row .col-price{color:var(--galben);font-family:var(--f-dot);font-weight:900;font-size:.95rem;flex:none}
 .board-head{background:var(--grafit);color:var(--gri);font-size:.62rem}
 .board-head .col-state,.board-head .col-price{color:var(--gri);font-family:var(--f-mono);font-weight:400;font-size:.62rem}
 

@@ -111,7 +111,7 @@ const FLAP_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-% ';
 function flapText(el, final, speed = 50) {
   const target = final.toUpperCase();
   let frame = 0;
-  const settle = target.split('').map((_, i) => 3 + i * 1.6 + Math.random() * 2);
+  const settle = target.split('').map((_, i) => 3 + i * 0.9 + Math.random() * 2);
   const tick = () => {
     let out = '', done = true;
     for (let i = 0; i < target.length; i++) {
@@ -124,20 +124,26 @@ function flapText(el, final, speed = 50) {
   };
   tick();
 }
-// logo: la prima vizita pe sesiune arata EASY, apoi cade pe YZZY
+// logo: la intrarea pe site (o data pe sesiune) o animatie de 3s
+// tine EASY ~0.7s, apoi flapeaza literele si se aseaza progresiv pe YZZY
 function logoFlip() {
-  const tiles = document.querySelectorAll('nav .logo .tile span');
+  const tiles = [...document.querySelectorAll('nav .logo .tile span')];
   if (tiles.length !== 4 || sessionStorage.getItem('yzzyFlip')) return;
   sessionStorage.setItem('yzzyFlip', '1');
-  const seq = ['EASY', 'YZZY'];
-  tiles.forEach((t, i) => { t.textContent = seq[0][i]; });
+  tiles.forEach((t, i) => { t.textContent = 'EASY'[i]; t.parentElement.classList.add('flapping'); });
+  const start = performance.now();
+  const settleAt = [1900, 2300, 2700, 3000];
   setTimeout(() => tiles.forEach((t, i) => {
-    let n = 0;
     const iv = setInterval(() => {
-      t.textContent = FLAP_CHARS[Math.floor(Math.random() * 36)];
-      if (++n > 4 + i * 2) { clearInterval(iv); t.textContent = seq[1][i]; }
-    }, 70);
-  }), 1100);
+      if (performance.now() - start >= settleAt[i]) {
+        clearInterval(iv);
+        t.textContent = 'YZZY'[i];
+        t.parentElement.classList.remove('flapping');
+      } else {
+        t.textContent = FLAP_CHARS[Math.floor(Math.random() * 36)];
+      }
+    }, 65);
+  }), 700);
 }
 
 // ---------- efecte ----------
