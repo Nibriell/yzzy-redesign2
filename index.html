@@ -39,7 +39,7 @@
 /* ---------- tomografie X-ray ---------- */
 .xray-scan{position:relative;width:min(244px,62vw);aspect-ratio:848/1264;border-radius:16px;overflow:hidden;background:#060606;cursor:pointer;box-shadow:0 0 0 1px var(--linie),0 24px 60px -28px rgba(0,0,0,.9)}
 .xray-scan img{position:absolute!important;inset:0;width:100%;height:100%;max-height:none!important;object-fit:cover;filter:none!important;user-select:none;-webkit-user-drag:none}
-.xray-scan .xr-xray{clip-path:inset(0 0 100% 0);transform:scale(.93);transform-origin:center;will-change:clip-path}
+.xray-scan .xr-xray{clip-path:inset(0 0 100% 0);will-change:clip-path}
 .xray-scan .xr-beam{position:absolute;left:0;right:0;height:90px;pointer-events:none;opacity:0;background:linear-gradient(to bottom,rgba(251,191,36,0),rgba(251,191,36,.18) 50%,rgba(251,191,36,0));mix-blend-mode:screen}
 .xray-scan .xr-line{position:absolute;left:-5%;right:-5%;height:3px;opacity:0;pointer-events:none;background:linear-gradient(90deg,transparent,var(--amber-aprins,#FBBF24),#fff,var(--amber-aprins,#FBBF24),transparent);box-shadow:0 0 26px 4px rgba(251,191,36,.9),0 0 8px 1px rgba(255,255,255,.7)}
 .xray-scan .xr-hud{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:.56rem;letter-spacing:.1em;color:var(--verde);opacity:0;transition:opacity .4s;text-shadow:0 0 10px rgba(74,222,128,.5);pointer-events:none}
@@ -129,8 +129,8 @@
   <div class="test-wrap">
     <div class="test-visual" id="scanBox">
       <div class="xray-scan" id="xrayScan" title="Scanare tomografică">
-        <img class="xr-base" src="assets/iphone17-front.jpg?v=5" alt="iPhone în control tehnic">
-        <img class="xr-xray" src="assets/iphone17-xray.jpg?v=5" alt="Tomografie internă a dispozitivului" aria-hidden="true">
+        <img class="xr-base" src="assets/iphone17-front.jpg?v=6" alt="iPhone în control tehnic">
+        <img class="xr-xray" src="assets/iphone17-xray.jpg?v=6" alt="Tomografie internă a dispozitivului" aria-hidden="true">
         <div class="xr-beam"></div>
         <div class="xr-line"></div>
         <span class="xr-hud mono" id="scanTags"></span>
