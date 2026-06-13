@@ -39,8 +39,8 @@
 /* ---------- tomografie X-ray ---------- */
 .xray-scan{position:relative;width:min(244px,62vw);aspect-ratio:848/1264;border-radius:16px;overflow:hidden;background:#060606;cursor:pointer;box-shadow:0 0 0 1px var(--linie),0 24px 60px -28px rgba(0,0,0,.9)}
 .xray-scan img{position:absolute!important;inset:0;width:100%;height:100%;max-height:none!important;object-fit:cover;filter:none!important;user-select:none;-webkit-user-drag:none}
-.xray-scan .xr-xray{clip-path:inset(0 0 100% 0);transform:scale(.93);transform-origin:center;will-change:clip-path}
-.xray-scan .xr-beam{position:absolute;left:0;right:0;height:70px;pointer-events:none;opacity:0;background:linear-gradient(to bottom,rgba(251,191,36,0),rgba(251,191,36,.07) 55%,rgba(251,191,36,.22));mix-blend-mode:screen}
+.xray-scan .xr-xray{clip-path:inset(0 0 100% 0);transform:scale(-.93,.93);transform-origin:center;will-change:clip-path}
+.xray-scan .xr-beam{position:absolute;left:0;right:0;height:90px;pointer-events:none;opacity:0;background:linear-gradient(to bottom,rgba(251,191,36,0),rgba(251,191,36,.18) 50%,rgba(251,191,36,0));mix-blend-mode:screen}
 .xray-scan .xr-line{position:absolute;left:-5%;right:-5%;height:3px;opacity:0;pointer-events:none;background:linear-gradient(90deg,transparent,var(--amber-aprins,#FBBF24),#fff,var(--amber-aprins,#FBBF24),transparent);box-shadow:0 0 26px 4px rgba(251,191,36,.9),0 0 8px 1px rgba(255,255,255,.7)}
 .xray-scan .xr-hud{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:.56rem;letter-spacing:.1em;color:var(--verde);opacity:0;transition:opacity .4s;text-shadow:0 0 10px rgba(74,222,128,.5);pointer-events:none}
 .xray-scan.on .xr-hud{opacity:1}
@@ -129,8 +129,8 @@
   <div class="test-wrap">
     <div class="test-visual" id="scanBox">
       <div class="xray-scan" id="xrayScan" title="Scanare tomografică">
-        <img class="xr-base" src="assets/iphone17-front.png?v=1" alt="iPhone în control tehnic">
-        <img class="xr-xray" src="assets/iphone17-xray.png?v=1" alt="Tomografie internă a dispozitivului" aria-hidden="true">
+        <img class="xr-base" src="assets/iphone17-front.jpg?v=2" alt="iPhone în control tehnic">
+        <img class="xr-xray" src="assets/iphone17-xray.jpg?v=2" alt="Tomografie internă a dispozitivului" aria-hidden="true">
         <div class="xr-beam"></div>
         <div class="xr-line"></div>
         <span class="xr-hud mono" id="scanTags"></span>
@@ -242,44 +242,50 @@ newGrid.innerHTML=P.filter(p=>p.cat==='telefoane').slice(0,4).concat(P.filter(p=
 bindAddButtons(newGrid);
 initSpotlight(newGrid);
 
-// control tehnic: tomografie X-ray (scanare → dezvăluie internele → revine la poză)
+// control tehnic: tomografie X-ray — fereastră mobilă de expunere, asimetrică pe direcția de mers
 (function(){
   const wrap=document.getElementById('xrayScan');
   if(!wrap)return;
   const xray=wrap.querySelector('.xr-xray'),line=wrap.querySelector('.xr-line'),beam=wrap.querySelector('.xr-beam'),hud=document.getElementById('scanTags');
   if(hud)hud.textContent='[ BATERIE 92% ]  [ ECRAN ORIGINAL ]  [ DEBLOCAT ]';
-  const DOWN=1750,HOLD=1300,UP=1050,GAP=1700; // ms
+  // fereastra X-ray vizibilă doar în jurul liniei: ~3cm înaintea ei + ~2cm în spate (din înălțimea telefonului)
+  const AHEAD=0.18, BEHIND=0.12;
+  const SWEEP=2000, GAP=1400; // ms per cursă, pauză între cicluri
   const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+  const clamp=v=>v<0?0:v>1?1:v;
   let running=false,autoLoop=true;
-  function setP(p){ // p:0..1 = fracțiune dezvăluită de sus în jos
-    xray.style.clipPath='inset(0 0 '+((1-p)*100).toFixed(2)+'% 0)';
-    const y=p*100;
-    line.style.top=y+'%';
-    beam.style.top='calc('+y+'% - 70px)';
+  function setBand(y,dir){ // y = poziția liniei (fracț. 0..1), dir +1 jos / -1 sus
+    let a,b; // marginile benzii, fracțiuni de sus în jos
+    if(dir>0){a=y-BEHIND;b=y+AHEAD;}else{a=y-AHEAD;b=y+BEHIND;}
+    const top=(clamp(a)*100).toFixed(2), bot=(clamp(1-b)*100).toFixed(2);
+    xray.style.clipPath='inset('+top+'% 0 '+bot+'% 0)';
+    line.style.top=(y*100).toFixed(2)+'%';
+    beam.style.top='calc('+(y*100).toFixed(2)+'% - 45px)';
   }
-  function run(){
+  function sweep(from,to,dir){
+    return new Promise(res=>{
+      const t0=performance.now();
+      (function step(){
+        const t=Math.min(1,(performance.now()-t0)/SWEEP);
+        setBand(from+(to-from)*ease(t),dir);
+        if(t<1)requestAnimationFrame(step); else res();
+      })();
+    });
+  }
+  async function run(){
     if(running)return;running=true;
-    wrap.classList.add('on');
-    line.style.opacity='1';beam.style.opacity='1';
-    const t0=performance.now();
-    (function down(){
-      const t=Math.min(1,(performance.now()-t0)/DOWN);setP(ease(t));
-      if(t<1){requestAnimationFrame(down);}
-      else{setTimeout(()=>{
-        const t1=performance.now();
-        (function up(){
-          const t=Math.min(1,(performance.now()-t1)/UP);setP(1-ease(t));
-          if(t<1){requestAnimationFrame(up);}
-          else{line.style.opacity='0';beam.style.opacity='0';wrap.classList.remove('on');running=false;
-            if(autoLoop)setTimeout(run,GAP);}
-        })();
-      },HOLD);}
-    })();
+    wrap.classList.add('on');line.style.opacity='1';beam.style.opacity='1';
+    await sweep(-AHEAD,1+BEHIND,+1);  // coboară: expune 3cm în față (jos) / 2cm în spate (sus)
+    await sweep(1+AHEAD,-BEHIND,-1);  // urcă: expune 3cm în față (sus) / 2cm în spate (jos)
+    line.style.opacity='0';beam.style.opacity='0';wrap.classList.remove('on');
+    setBand(-AHEAD,+1); // colapsat → rămâne doar poza din față (ecran)
+    running=false;
+    if(autoLoop)setTimeout(run,GAP);
   }
-  setP(0);
-  if(reduce){ // fără mișcare: arată direct tomografia, fără buclă
-    setP(1);wrap.classList.add('on');autoLoop=false;
+  setBand(-AHEAD,+1); // start: nimic expus, doar fața
+  if(reduce){ // fără mișcare: arată tomografia statică
+    xray.style.clipPath='inset(0 0 0 0)';wrap.classList.add('on');autoLoop=false;
   }else{
     const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.unobserve(e.target);run();}}),{threshold:.45});
     io.observe(wrap);
