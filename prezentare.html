@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YZZY — Strategie de brand & redesign (pitch · Solari)</title>
+<meta name="description" content="Prezentarea conceptului A doua plecare (Solari) + plan de marketing și rebranding pentru YZZY, ancorat în păreri reale de pe forumuri.">
+<link rel="stylesheet" href="theme.css?v=3">
+<style>
+.deck{max-width:1200px;margin:0 auto}
+.slide{padding:96px 4vw;border-bottom:1px solid var(--linie);position:relative}
+.disp{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:.98}
+.tag{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);display:inline-flex;align-items:center;gap:10px;margin-bottom:20px}
+.tag::before{content:"";width:30px;height:1px;background:var(--amber)}
+.s-title{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(2rem,5vw,4rem);line-height:.98;letter-spacing:-.01em;margin-bottom:18px}
+.s-title em{font-style:normal;color:var(--amber)}
+.lead{color:var(--gri);font-size:1.1rem;max-width:680px;line-height:1.7}
+.lead b{color:var(--alb)}
+.cover{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding:120px 4vw 70px;position:relative;overflow:hidden}
+.cover-glow{position:absolute;top:-20%;right:-10%;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,.1),transparent 60%);pointer-events:none}
+.cover h1{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(2.8rem,9vw,7rem);line-height:.92;letter-spacing:-.01em}
+.cover h1 em{font-style:normal;color:var(--amber)}
+.cover .sub{color:var(--gri);max-width:560px;font-size:1.15rem;margin:24px 0 32px}
+.cover .meta{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gri);margin-top:40px;display:flex;gap:22px;flex-wrap:wrap}
+.cover .meta b{color:var(--amber)}
+.traction{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.tr{background:var(--carbune);border:1px solid var(--linie);border-radius:14px;padding:24px}
+.tr b{font-family:var(--f-display);font-stretch:125%;font-weight:900;font-size:clamp(1.7rem,3.4vw,2.5rem);color:var(--amber);display:block;line-height:1}
+.tr span{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gri);display:block;margin-top:10px}
+@media(max-width:820px){.traction{grid-template-columns:1fr 1fr}}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+@media(max-width:820px){.cols{grid-template-columns:1fr}}
+.card{background:var(--carbune);border:1px solid var(--linie);border-radius:16px;padding:28px}
+.card h4{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.1rem;margin-bottom:10px}
+.card h4 .ic{color:var(--amber);margin-right:8px}
+.card p{color:var(--gri);font-size:.95rem}
+.card ul{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.card li{color:var(--gri);font-size:.92rem;display:flex;gap:10px}
+.card li::before{content:"";width:6px;height:6px;background:var(--amber);transform:rotate(45deg);margin-top:7px;flex:none}
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+@media(max-width:820px){.quotes{grid-template-columns:1fr}}
+.quote{border:1px solid var(--linie);border-left:3px solid var(--amber);border-radius:0 14px 14px 0;padding:22px 24px;background:var(--carbune)}
+.quote p{font-size:1.02rem;line-height:1.55;color:var(--alb)}
+.quote .src{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gri);margin-top:12px}
+.quote.good{border-left-color:#4ADE80}
+.verdict{margin-top:30px;background:var(--fum);border:1px solid rgba(245,158,11,.25);border-radius:16px;padding:26px}
+.verdict p{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(1.2rem,2.6vw,1.7rem);line-height:1.15}
+.verdict p em{font-style:normal;color:var(--amber)}
+.maprow{display:grid;grid-template-columns:1fr 1.3fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--linie);align-items:start}
+.maprow:last-child{border-bottom:none}
+@media(max-width:760px){.maprow{grid-template-columns:1fr}}
+.maprow .obj{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.05rem;color:var(--alb);display:flex;gap:12px;align-items:flex-start}
+.maprow .obj .x{color:#F87171;flex:none}
+.maprow .ans{color:var(--gri);font-size:.95rem}
+.maprow .ans b{color:var(--amber);font-weight:400;font-family:var(--f-mono);font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+@media(max-width:820px){.timeline{grid-template-columns:1fr}}
+.phase{background:var(--carbune);border:1px solid var(--linie);border-radius:16px;padding:26px}
+.phase .ph{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.phase h4{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.1rem;margin-bottom:12px}
+.phase ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.phase li{color:var(--gri);font-size:.88rem;display:flex;gap:10px}
+.phase li::before{content:"→";color:var(--amber);flex:none}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.chip{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--linie);border-radius:100px;padding:10px 18px;color:var(--alb)}
+.chip b{color:var(--amber)}
+.brandbar{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+@media(max-width:820px){.brandbar{grid-template-columns:1fr}}
+.bspec{background:var(--carbune);border:1px solid var(--linie);border-radius:16px;padding:26px}
+.bspec .lbl{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gri);margin-bottom:14px}
+.swatches{display:flex;gap:8px;margin-bottom:8px}
+.sw{width:40px;height:40px;border-radius:10px;border:1px solid var(--linie)}
+.flap{display:inline-flex;gap:4px}
+.flap span{position:relative;display:inline-grid;place-items:center;width:30px;height:40px;background:var(--grafit);border-radius:4px;font-family:var(--f-mono);font-weight:700;font-size:20px;color:var(--amber)}
+.flap span::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--abis)}
+.demo-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.pf{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:28px}
+@media(max-width:900px){.pf{grid-template-columns:1fr 1fr}}
+.pf a{border:1px solid var(--linie);border-radius:12px;padding:16px;text-decoration:none;color:var(--alb);transition:border-color .2s,transform .2s}
+.pf a:hover{border-color:var(--amber);transform:translateY(-3px)}
+.pf .n{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.1em;color:var(--gri)}
+.pf b{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1rem;display:block;margin-top:8px}
+.pf a.rec{border-color:var(--amber);background:var(--fum)}
+.final-cta{text-align:center;padding:110px 4vw}
+.final-cta h2{font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(2.2rem,6vw,4.6rem);margin-bottom:18px}
+.final-cta h2 em{font-style:normal;color:var(--amber)}
+.note{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.06em;color:var(--gri);margin-top:14px}
+.srcs{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.04em;color:var(--gri);line-height:1.9}
+.srcs a{color:var(--gri)}
+</style>
+</head>
+<body>
+<nav id="nav"></nav>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="cover-glow"></div>
+  <div class="deck">
+    <div class="tag">Strategie de brand · Pitch · 2026</div>
+    <h1>Următorul nivel<br>e <em>la îmbarcare.</em></h1>
+    <p class="sub">Un concept de redesign, un plan de rebranding și un plan de marketing pentru YZZY — construite pornind de la ce spun, de fapt, cumpărătorii și vânzătorii pe forumuri.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn btn-amber" href="index.html">Vezi demo-ul live →</a>
+      <a class="btn btn-ghost" href="#piata">Ce spune piața ↓</a>
+    </div>
+    <div class="meta"><span>Concept: <b>A doua plecare</b></span><span>Brand: <b>YZZY</b></span><span>Piață: <b>refurbished RO</b></span></div>
+  </div>
+</header>
+
+<!-- YZZY AZI -->
+<section class="slide">
+  <div class="deck">
+    <div class="tag">01 · Ce e YZZY azi</div>
+    <h2 class="s-title">Un magazin bun, <em>care merită cunoscut</em></h2>
+    <p class="lead">YZZY vinde telefoane și gadgeturi recondiționate, verificate și garantate. Vrea un singur lucru: să facă alegerea unui telefon „ca nou" <b>simplă și sigură</b> — și deja o face foarte bine. Problema nu e oferta. E cât de puțini știu cât de bună e.</p>
+    <div class="cols">
+      <div class="card">
+        <h4><span class="ic">▸</span>Ce oferă</h4>
+        <ul>
+          <li>Telefoane, tablete, laptopuri, smartwatch & accesorii recondiționate</li>
+          <li>Buyback: îți vinzi telefonul vechi în ~2 minute, cu preț onorat</li>
+          <li>Service GSM propriu (iPhone & Samsung), piese originale</li>
+          <li>Plata în rate prin 4 parteneri, livrare gratuită în 24h</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4><span class="ic">▸</span>Ce promite</h4>
+        <ul>
+          <li>Garanție 2 ani — dublu față de mulți concurenți</li>
+          <li>Retur gratuit 30 de zile</li>
+          <li>Verificare tehnică în zeci de criterii, baterie min. 85%</li>
+          <li>Stări de produs afișate transparent</li>
+        </ul>
+      </div>
+    </div>
+    <div class="traction">
+      <div class="tr"><b>70.000+</b><span>utilizatori din 2021</span></div>
+      <div class="tr"><b>1,5 → 5,5M</b><span>lei venituri 2022→2024</span></div>
+      <div class="tr"><b>~0%</b><span>rată de retur (2025)</span></div>
+      <div class="tr"><b>★ 4,9</b><span>rating Google · 470+ recenzii</span></div>
+    </div>
+    <p class="note">Cifre din presă (HotNews, Startupcafe) și din comunicarea YZZY.</p>
+  </div>
+</section>
+
+<!-- CE SPUNE PIATA -->
+<section class="slide" id="piata">
+  <div class="deck">
+    <div class="tag">02 · Ce spune piața (real, de pe forumuri)</div>
+    <h2 class="s-title">Cei care cumpără <em>sunt fani.</em><br>Cei care doar privesc <em>ezită.</em></h2>
+    <p class="lead">Am citit discuțiile independente despre YZZY (tpu.ro, Softpedia, bloguri). Tiparul e clar și util: oamenii care chiar tranzacționează rămân încântați — restul au o singură mare reținere.</p>
+    <div class="quotes">
+      <div class="quote"><p>„E dubios că au recenzii doar bune… toate comentariile par scrise de boți."</p><div class="src">tpu.ro · cumpărător potențial</div></div>
+      <div class="quote"><p>„Prețuri așa mici la unele produse… iPhone 13 la 1700 lei. Oare e de încredere sau e scam?"</p><div class="src">tpu.ro · cumpărător potențial</div></div>
+      <div class="quote"><p>„Nici nu am auzit de ei. Dacă-s noi, despre ce încredere vorbim?"</p><div class="src">tpu.ro · cumpărător potențial</div></div>
+      <div class="quote good"><p>„Mi-au dat câteva sute de lei mai mult decât Flip și au plătit fix cât au zis, fără negocieri. Recomand."</p><div class="src">vasi.ro · vânzător real (buyback)</div></div>
+    </div>
+    <div class="verdict"><p>Bariera nu e calitatea. E <em>un gol de încredere:</em> recenziile prea bune par false, prețul prea mic pare suspect, iar brandul e încă necunoscut.</p></div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="slide">
+  <div class="deck">
+    <div class="tag">03 · Problema reală</div>
+    <h2 class="s-title">Paradoxul <em>încrederii</em></h2>
+    <p class="lead">YZZY suferă de o problemă fericită: e <b>prea bun ca să pară adevărat</b>. Trei fricțiuni transformă un client interesat într-unul care ezită — și niciuna nu se rezolvă cu prețuri mai mari, ci cu <b>dovadă vizibilă</b>.</p>
+    <div class="cols" style="grid-template-columns:repeat(3,1fr)">
+      <div class="card"><h4>Recenzii „prea bune"</h4><p>Doar 5 stele → creierul citește „aranjate". Lipsesc dovezile independente, verificabile.</p></div>
+      <div class="card"><h4>Preț „prea mic"</h4><p>Fără explicația de ce e mai ieftin, reducerea devine semnal de risc, nu de oportunitate.</p></div>
+      <div class="card"><h4>Brand „necunoscut"</h4><p>Fără o identitate memorabilă, YZZY e doar „încă un site". Flip e cunoscut; YZZY trebuie să devină de neuitat.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPTUL SOLARI -->
+<section class="slide">
+  <div class="deck">
+    <div class="tag">04 · Conceptul de redesign</div>
+    <h2 class="s-title">A doua plecare — tehnologie <em>care mai are o cursă</em></h2>
+    <p class="lead">Telefoanele recondiționate primesc a doua plecare: verificate, igienizate, gata de îmbarcare. Estetica unei tabele de aeroport (amber pe negru, split-flap) construită în jurul unui singur mesaj pe care forumul îl cere: <b>dovada că totul e testat.</b></p>
+    <div class="cols">
+      <div class="card">
+        <h4><span class="ic">▸</span>Ce e</h4>
+        <ul>
+          <li>Identitate de „terminal": tabelă split-flap, burtieră, boarding pass</li>
+          <li>Amber + galben pe negru — premium, calm, imposibil de confundat</li>
+          <li>Ton încrezător, aerisit, transparent — „niciun telefon nu decolează netestat"</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4><span class="ic">▸</span>Ce oferă (100% funcțional)</h4>
+        <ul>
+          <li>Site multi-pagină cu 152 de produse reale din stocul YZZY</li>
+          <li>Coș → finalizare „boarding pass", calculator de rate, buyback, service</li>
+          <li>„Control tehnic": scanare vizuală + sigiliu de garanție pe produs</li>
+        </ul>
+      </div>
+    </div>
+    <div class="demo-row">
+      <a class="btn btn-amber" href="index.html">Deschide demo-ul →</a>
+      <a class="btn btn-ghost" href="catalog.html">Vezi catalogul live</a>
+    </div>
+  </div>
+</section>
+
+<!-- MAPARE -->
+<section class="slide">
+  <div class="deck">
+    <div class="tag">05 · Miezul ideii</div>
+    <h2 class="s-title">Cum conceptul <em>răspunde forumului</em></h2>
+    <p class="lead">Fiecare obiecție reală a cumpărătorilor are un răspuns direct în concept + strategie. Nu schimbăm produsul — facem <b>încrederea vizibilă.</b></p>
+    <div style="margin-top:30px">
+      <div class="maprow">
+        <div class="obj"><span class="x">✕</span>„Recenziile par false / boți"</div>
+        <div class="ans"><b>Dovadă independentă, la vedere</b><br>Widget Trustpilot + Google real, recenzii video cu nume și produs, rating afișat pe fiecare pagină. Lăsăm și recenziile critice — autenticitatea vinde.</div>
+      </div>
+      <div class="maprow">
+        <div class="obj"><span class="x">✕</span>„Prețuri prea mici, suspecte"</div>
+        <div class="ans"><b>Demistificăm prețul + „verificat bucată cu bucată"</b><br>O secțiune „de ce e mai ieftin" (refurbished, fără adaos de retail) + teatrul de control tehnic din concept: scanare, raport, sigiliu. Prețul mic devine logic, nu riscant.</div>
+      </div>
+      <div class="maprow">
+        <div class="obj"><span class="x">✕</span>„N-am auzit de ei"</div>
+        <div class="ans"><b>Brand distinctiv, nu doar reclamă multă</b><br>Estetica de terminal face YZZY memorabil dintr-o privire. Un brand de neuitat câștigă teren chiar și cu buget mai mic decât Flip — prin distinctivitate + PR + social.</div>
+      </div>
+      <div class="maprow">
+        <div class="obj"><span class="x">✕</span>„Ce înseamnă «sigilat YZZY»?"</div>
+        <div class="ans"><b>Stări clare + raport de control public</b><br>Pe fiecare produs: starea reală (baterie %, estetic), explicat simplu. „Sigilat YZZY = verificat și resigilat de noi" — fără ambiguitate.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REBRANDING -->
+<section class="slide">
+  <div class="deck">
+    <div class="tag">06 · Plan de rebranding</div>
+    <h2 class="s-title">Păstrăm numele. <em>Schimbăm haina.</em></h2>
+    <p class="lead">„YZZY" rămâne — vine de la „easy", e scurt, are deja notorietate. Schimbăm <b>haina și vocea</b>: de la „încă un magazin" la un brand premium-aviatic, calm și sigur pe el.</p>
+    <div class="brandbar">
+      <div class="bspec">
+        <div class="lbl">Logo & motiv</div>
+        <div class="flap"><span>Y</span><span>Z</span><span>Z</span><span>Y</span></div>
+        <p class="card" style="border:none;padding:12px 0 0;color:var(--gri);font-size:.88rem">Plăcuțe split-flap care, la încărcare, „cad" din EASY în YZZY.</p>
+      </div>
+      <div class="bspec">
+        <div class="lbl">Paletă</div>
+        <div class="swatches">
+          <span class="sw" style="background:#F59E0B"></span>
+          <span class="sw" style="background:#FFD000"></span>
+          <span class="sw" style="background:#060606"></span>
+          <span class="sw" style="background:#FAFAF9"></span>
+        </div>
+        <p class="card" style="border:none;padding:12px 0 0;color:var(--gri);font-size:.88rem">Amber · galben de tabelă · negru abis · alb cald. Cald, premium, nocturn.</p>
+      </div>
+      <div class="bspec">
+        <div class="lbl">Voce & tagline</div>
+        <p style="font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:1.25rem;color:var(--amber);line-height:1.05">„A doua plecare."</p>
+        <p class="card" style="border:none;padding:12px 0 0;color:var(--gri);font-size:.88rem">Calm, aerisit, transparent — „niciun telefon nu decolează netestat".</p>
+      </div>
+    </div>
+    <div class="cols" style="margin-top:18px">
+      <div class="card"><h4><span class="ic">▸</span>Sistem vizual</h4><p>Tabelă split-flap, burtieră, sigiliul „garanție 2 ani", boarding pass, cardul de raport tehnic — un kit de elemente care repetă mesajul „verificat".</p></div>
+      <div class="card"><h4><span class="ic">▸</span>Aplicații</h4><p>Ambalaj-„boarding pass", ștampila de verificare, șabloane TikTok/IG, semnătura split-flap. Brandul devine recognoscibil oriunde.</p></div>
+    </div>
+    <p class="lead" style="margin-top:24px;font-size:.98rem">Există un portofoliu de <b>5 direcții vizuale</b> testate — „A doua plecare" e recomandarea acestui pitch, dar decizia e a ta:</p>
+    <div class="pf">
+      <a href="https://nibriell.github.io/yzzy-redesign1/"><span class="n">01</span><b>Teren</b></a>
+      <a class="rec" href="https://nibriell.github.io/yzzy-redesign2/"><span class="n">★ Recomandat</span><b>A doua plecare</b></a>
+      <a href="https://nibriell.github.io/yzzy-redesign3/"><span class="n">03</span><b>Easy</b></a>
+      <a href="https://nibriell.github.io/yzzy-redesign4/"><span class="n">04</span><b>Neo-pop</b></a>
+      <a href="https://nibriell.github.io/yzzy-redesign5/"><span class="n">05</span><b>Ca nou</b></a>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETING -->
+<section class="slide">
+  <div class="deck">
+    <div class="tag">07 · Plan de marketing</div>
+    <h2 class="s-title">Atac pe <em>încredere</em>, nu pe preț</h2>
+    <p class="lead">Poziționare vs Flip.ro: <b>„nu doar mai cunoscut — mai corect."</b> YZZY onorează prețul la buyback, are gamă mai largă și garanție 2 ani. Tot ce facem împinge un singur lucru: dovada.</p>
+    <div class="cols" style="margin-top:30px">
+      <div class="card">
+        <h4><span class="ic">▸</span>Playbook-ul de încredere (prioritate #1)</h4>
+        <ul>
+          <li>Trustpilot + recenzii Google integrate vizibil pe site</li>
+          <li>Recenzii video reale, cu nume și produs (combat „boții")</li>
+          <li>„Raportul de control" public pe fiecare produs</li>
+          <li>Conținut „de ce e mai ieftin" (demistificarea prețului)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4><span class="ic">▸</span>Buyback = motor dublu</h4>
+        <ul>
+          <li>Aduce stoc + clienți loiali, simultan</li>
+          <li>Diferențiator clar vs Flip: „îți onorăm prețul"</li>
+          <li>Campanie „A doua plecare": dă-l pe-al tău, ia-l pe următorul</li>
+        </ul>
+      </div>
+    </div>
+    <div class="chips">
+      <span class="chip"><b>TikTok / IG</b> · unboxing & control tehnic</span>
+      <span class="chip"><b>YouTube</b> · proces de testare, recenzii lungi</span>
+      <span class="chip"><b>Google</b> · Shopping + Search</span>
+      <span class="chip"><b>Micro-influenceri</b> tech RO</span>
+      <span class="chip"><b>PR</b> · amplificăm presa existentă</span>
+      <span class="chip"><b>Email / SMS</b> · buyback & retenție</span>
+      <span class="chip"><b>Retargeting</b></span>
+    </div>
+    <div class="timeline">
+      <div class="phase">
+        <div class="ph">Faza 1 · 0–30 zile</div>
+        <h4>Fundație de încredere</h4>
+        <ul><li>Trustpilot live + recenzii video</li><li>Raport de control pe produs</li><li>Rebrand soft (logo, voce)</li></ul>
+      </div>
+      <div class="phase">
+        <div class="ph">Faza 2 · 30–90 zile</div>
+        <h4>Lansare & zgomot</h4>
+        <ul><li>Site nou live</li><li>Campanie social „A doua plecare"</li><li>Push buyback „Dă-l, ia următorul"</li></ul>
+      </div>
+      <div class="phase">
+        <div class="ph">Faza 3 · 90–365 zile</div>
+        <h4>Scalare</h4>
+        <ul><li>Influenceri + PR la scară</li><li>Extindere categorii</li><li>Optimizare pe KPI</li></ul>
+      </div>
+    </div>
+    <div class="chips" style="margin-top:24px">
+      <span class="chip">KPI: <b>recenzii noi/lună</b></span>
+      <span class="chip">KPI: <b>volum căutări brand</b></span>
+      <span class="chip">KPI: <b>% stoc din buyback</b></span>
+      <span class="chip">KPI: <b>CAC</b></span>
+      <span class="chip">KPI: <b>conversie</b></span>
+      <span class="chip">KPI: <b>retur ~0%</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTINUT SOCIAL -->
+<section class="slide" id="continut">
+  <div class="deck">
+    <div class="tag">08 · Conținut & ton pe social</div>
+    <h2 class="s-title">De la teleshopping <em>la atelier deschis</em></h2>
+    <p class="lead">Clipurile scurte, filmate în același cadru de birou, cu ton alert și — în ultima vreme — doar patronul, sună fără să vrea a „ofertă-șoc". Și exact asta hrănește suspiciunea de pe forumuri: <b>„prea ieftin, par boți, e scam?"</b>. Vestea bună: <b>arătați deja produsul real și procesul</b> — partea grea e bifată. Schimbăm <b>energia și distribuția</b>, nu fondul.</p>
+    <div class="cols">
+      <div class="card">
+        <h4><span class="ic">▸</span>Ce păstrați (e deja bun)</h4>
+        <ul>
+          <li>Arătați produsele reale, în mână, pe bune</li>
+          <li>Filmați procesul, nu doar promisiuni</li>
+          <li>Sunteți prezenți constant, cu ritm de publicare</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4><span class="ic">▸</span>Ce schimbați</h4>
+        <ul>
+          <li><b>Tonul:</b> calm și sigur, nu alert și presant</li>
+          <li><b>Distribuția:</b> echipa, nu doar patronul</li>
+          <li><b>Cadrul:</b> atelierul viu, nu doar biroul</li>
+        </ul>
+      </div>
+    </div>
+    <div class="verdict"><p>Atitudinea nouă: <em>atelierul deschis.</em> Nu „vânzătorul care te convinge", ci <em>expertul care n-are nimic de ascuns.</em></p></div>
+    <p class="tag" style="margin-top:44px">Cine apare în cadru</p>
+    <div class="cols" style="grid-template-columns:repeat(3,1fr)">
+      <div class="card"><h4>Patronul = fondator-expert</h4><p>13+ ani în service GSM. Își arată atelierul și explică, nu strigă oferte. Autoritate, nu insistență.</p></div>
+      <div class="card"><h4>Tehnicianul = vedeta</h4><p>Omul care chiar testează telefoanele — „cel care prinde defectele înainte să ajungă la tine". Credibilitate pură.</p></div>
+      <div class="card"><h4>Echipa = firmă reală</h4><p>Mai multe fețe, cu nume și rol (suport, foto, curier). Diversitatea de oameni e ea însăși semnal de încredere.</p></div>
+    </div>
+    <p class="tag" style="margin-top:44px">Stâlpi de conținut (în loc de „oferta zilei")</p>
+    <div class="chips">
+      <span class="chip"><b>Vestiarul</b> · cum testăm, pas cu pas</span>
+      <span class="chip"><b>Povești de buyback</b> · „ți-am onorat prețul"</span>
+      <span class="chip"><b>De ce e mai ieftin</b> · explicat calm</span>
+      <span class="chip"><b>Voci de clienți</b> · reali, cu nume</span>
+      <span class="chip"><b>Mit vs adevăr</b> · ce înseamnă „sigilat YZZY"</span>
+    </div>
+    <p style="font-family:var(--f-display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(1.5rem,3.6vw,2.6rem);letter-spacing:-.01em;margin-top:48px;line-height:1.08">Ritmul așezat al cuiva sigur pe produs <span class="amber">vinde mai mult</span> decât graba teleshopping. Tonul de atitudine: <span class="amber">„Nu-ți vindem. Îți arătăm."</span></p>
+  </div>
+</section>
+
+<!-- STUDIO -->
+<section class="slide" id="studio">
+  <div class="deck">
+    <div class="tag">09 · Brand în spațiul fizic</div>
+    <h2 class="s-title">Și <em>studioul</em> poartă brandul</h2>
+    <p class="lead">Conținutul social se filmează dintr-un colț de birou. Dacă acel colț poartă tema brandului, <b>fiecare clip devine reclamă</b>, nu doar conținut — și se leagă direct de „atelierul deschis". Nu schimbăm ce filmați, ci <b>spațiul</b> din care filmați. Service-ul rămâne service; aici e doar colțul de filmare. Mai jos, setul în tema „A doua plecare".</p>
+    <div style="border:1px solid var(--linie);border-radius:16px;overflow:hidden;background:#060606;margin-top:30px">
+      <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto" role="img" aria-label="Schiță a colțului de filmare YZZY în tema Solari: perete negru cu tabelă split-flap YZZY, semn LED, birou cu produse, ring light și cameră pe trepied.">
+        <defs>
+          <radialGradient id="sglow" cx="50%" cy="26%" r="62%"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.20"/><stop offset="1" stop-color="#F59E0B" stop-opacity="0"/></radialGradient>
+          <linearGradient id="sfloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12120F"/><stop offset="1" stop-color="#060606"/></linearGradient>
+        </defs>
+        <rect width="800" height="500" fill="#060606"/><rect width="800" height="500" fill="url(#sglow)"/>
+        <g stroke="#F59E0B" stroke-opacity="0.05"><line x1="0" y1="90" x2="800" y2="90"/><line x1="0" y1="180" x2="800" y2="180"/><line x1="160" y1="0" x2="160" y2="360"/><line x1="320" y1="0" x2="320" y2="360"/><line x1="480" y1="0" x2="480" y2="360"/><line x1="640" y1="0" x2="640" y2="360"/></g>
+        <rect y="362" width="800" height="138" fill="url(#sfloor)"/><line x1="0" y1="362" x2="800" y2="362" stroke="#27272A"/>
+        <g transform="translate(262,64)" font-family="monospace" font-weight="700" font-size="42" text-anchor="middle">
+          <rect x="0" y="0" width="62" height="84" rx="6" fill="#18181B"/><line x1="0" y1="42" x2="62" y2="42" stroke="#060606" stroke-width="2"/><text x="31" y="56" fill="#F59E0B">Y</text>
+          <rect x="72" y="0" width="62" height="84" rx="6" fill="#18181B"/><line x1="72" y1="42" x2="134" y2="42" stroke="#060606" stroke-width="2"/><text x="103" y="56" fill="#F59E0B">Z</text>
+          <rect x="144" y="0" width="62" height="84" rx="6" fill="#18181B"/><line x1="144" y1="42" x2="206" y2="42" stroke="#060606" stroke-width="2"/><text x="175" y="56" fill="#F59E0B">Z</text>
+          <rect x="216" y="0" width="62" height="84" rx="6" fill="#18181B"/><line x1="216" y1="42" x2="278" y2="42" stroke="#060606" stroke-width="2"/><text x="247" y="56" fill="#F59E0B">Y</text>
+        </g>
+        <rect x="250" y="166" width="300" height="30" rx="8" fill="#1C1303" stroke="#F59E0B" stroke-opacity="0.3"/>
+        <text x="400" y="186" text-anchor="middle" font-family="monospace" font-size="11" letter-spacing="2" fill="#FFD000">GARANȚIE 2 ANI ◆ LIVRARE 24H ◆ RATE</text>
+        <circle cx="650" cy="150" r="40" fill="none" stroke="#F59E0B" stroke-width="2" stroke-opacity="0.6"/>
+        <text x="650" y="146" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="15" fill="#F59E0B">CA</text>
+        <text x="650" y="164" text-anchor="middle" font-family="monospace" font-size="9" letter-spacing="1" fill="#A1A1AA">NOU</text>
+        <line x1="170" y1="330" x2="630" y2="330" stroke="#F59E0B" stroke-width="2"/><rect x="170" y="332" width="460" height="58" fill="#0E0E10" stroke="#27272A"/>
+        <g><rect x="225" y="300" width="26" height="44" rx="5" fill="#161616" stroke="#27272A"/><rect x="229" y="305" width="18" height="30" rx="2" fill="#1C1303"/><rect x="262" y="296" width="26" height="48" rx="5" fill="#161616" stroke="#27272A"/><rect x="266" y="301" width="18" height="34" rx="2" fill="#1C1303"/><rect x="520" y="300" width="26" height="44" rx="5" fill="#161616" stroke="#27272A"/><rect x="524" y="305" width="18" height="30" rx="2" fill="#1C1303"/></g>
+        <g><ellipse cx="400" cy="332" rx="64" ry="10" fill="#000" opacity="0.45"/><path d="M362 332 Q360 270 400 256 Q440 270 438 332 Z" fill="#101010"/><circle cx="400" cy="238" r="26" fill="#141414"/><path d="M362 332 Q360 270 400 256" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-opacity="0.8"/><path d="M376 247 A26 26 0 0 0 386 218" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-opacity="0.7"/></g>
+        <line x1="120" y1="498" x2="128" y2="300" stroke="#2A2A2A" stroke-width="5"/><circle cx="128" cy="276" r="46" fill="none" stroke="#FBBF24" stroke-width="7" opacity="0.92"/>
+        <g><line x1="672" y1="300" x2="640" y2="498" stroke="#2A2A2A" stroke-width="4"/><line x1="672" y1="300" x2="700" y2="498" stroke="#2A2A2A" stroke-width="4"/><line x1="672" y1="300" x2="672" y2="470" stroke="#2A2A2A" stroke-width="4"/><rect x="654" y="262" width="36" height="58" rx="7" fill="#161616" stroke="#F59E0B" stroke-opacity="0.5"/><rect x="659" y="268" width="26" height="40" rx="3" fill="#1C1303"/><circle cx="672" cy="252" r="5" fill="#FFD000"/><text x="672" y="240" text-anchor="middle" font-family="monospace" font-size="9" fill="#FFD000">REC</text></g>
+      </svg>
+    </div>
+    <div class="chips" style="margin-top:24px">
+      <span class="chip"><b>Tabelă pe perete</b> · marca în spate</span>
+      <span class="chip"><b>Semn LED + burtieră</b> · încredere fără sonor</span>
+      <span class="chip"><b>Lumină caldă amber</b> · premium nocturn</span>
+      <span class="chip"><b>Produse la vedere</b></span>
+      <span class="chip"><b>Cadru vertical</b> · TikTok / Reels</span>
+    </div>
+    <div class="demo-row" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px">
+      <a class="btn btn-amber" href="studio.html">Vezi studioul în temă →</a>
+    </div>
+    <p class="note" style="margin-top:18px;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.06em;color:var(--gri)">Exemplu pentru conceptul „A doua plecare". Fiecare concept ales primește propriul set, în culorile lui.</p>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final-cta grid-bg">
+  <h2 class="disp">Mingea... <em>e la voi.</em></h2>
+  <p class="lead" style="margin:0 auto 30px">Alegem direcția, lansăm site-ul și pornim playbook-ul de încredere. YZZY are deja produsul câștigător — hai să-l facem și de neuitat.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a class="btn btn-amber" href="index.html">Vezi demo-ul →</a>
+    <a class="btn btn-ghost" href="https://wa.me/+40761053053">Hai să vorbim</a>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+<div style="padding:30px 4vw;border-top:1px solid var(--linie)">
+  <div class="deck">
+    <p class="srcs">Surse independente & date:
+      <a href="https://www.tpu.ro/telefonie/buna-a-cumparat-sau-vandut-cineva-telefoane-de-la-yzzy-ce-parere-aveti-despre-ei-sunt-de-incredere/">tpu.ro</a> ·
+      <a href="https://forum.softpedia.com/topic/1227250-sfat-achizitie-telefoane-de-pe-yzzyro/">Softpedia</a> ·
+      <a href="https://vasi.ro/prima-impresie-despre-yzzy-ro/">vasi.ro</a> ·
+      <a href="https://hotnews.ro/rata-de-retur-0-in-2025-brandul-romanesc-yzzy-confirma-succesul-pe-piata-gadgeturilor-preloved-2122123">HotNews</a> ·
+      <a href="https://startupcafe.ro/yzzy-radiografia-unui-retailer-de-telefoane-second-hand-htm-0-24770">Startupcafe</a>.
+      Document demo de strategie — citatele sunt reale, parafrazate scurt.</p>
+  </div>
+</div>
+
+<script src="data/catalog.js?v=3"></script>
+<script src="app.js?v=3"></script>
+<script>
+renderNav('');
+renderFooter(document.getElementById('footer'));
+document.querySelectorAll('.card,.tr,.quote,.maprow,.phase,.bspec,.pf a').forEach(el=>el.classList.add('reveal'));
+initReveal();
+</script>
+</body>
+</html>
