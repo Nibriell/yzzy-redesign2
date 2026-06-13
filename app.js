@@ -130,8 +130,11 @@ function flapText(el, final, speed = 50) {
 function logoFlip() {
   const tiles = [...document.querySelectorAll('nav .logo .tile')];
   const spans = tiles.map(t => t.querySelector('span'));
-  if (spans.length !== 4 || sessionStorage.getItem('yzzyFlip')) return;
-  sessionStorage.setItem('yzzyFlip', '1');
+  if (spans.length !== 4) return;
+  // ruleaza pe homepage la FIECARE incarcare/refresh (fara gate de sesiune),
+  // dar nu si la navigarea intre subpagini
+  const p = location.pathname;
+  if (!(p.endsWith('index.html') || p.endsWith('/'))) return;
 
   const EASY = 'EASY', YZZY = 'YZZY';
   const ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
